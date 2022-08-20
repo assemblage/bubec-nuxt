@@ -78,7 +78,9 @@ const getRoutes = async () => {
     ...programRoutes,
     ...programCategoriesRoutes,
     ...coursesRoutes,
-    { route: '/aktuality', payload: { articlesRes }},
+    { route: '/aktuality', payload: { 
+      articles: articlesRes
+    }},
     { route: '/program', payload: {
       program: programRes,
       programCategories: programCategoriesRes,
