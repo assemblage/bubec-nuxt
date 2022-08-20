@@ -210,6 +210,7 @@ export default async () => {
         { name: 'msapplication-TileColor', content: config.seo.themeColor },
       ],
       link: [
+        ...assets.css,
         { rel: 'icon', type: 'image/x-icon', href: '/favicons/favicon.ico', media: '(prefers-color-scheme:light)' },
         { rel: 'icon', type: 'image/png', sizes: "16x16", href: '/favicons/favicon-16x16.png', media: '(prefers-color-scheme:light)' },
         { rel: 'icon', type: 'image/png', sizes: "32x32", href: '/favicons/favicon-32x32.png', media: '(prefers-color-scheme:light)' },
@@ -226,8 +227,7 @@ export default async () => {
           rel:"preconnect",
           hid:"preconnect-google-tag-manager",
           href: 'https://www.googletagmanager.com',
-        },
-        ...assets.css
+        }
       ],
       script: [ ...assets.script ]
     }
