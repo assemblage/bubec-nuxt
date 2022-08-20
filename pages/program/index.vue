@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-center text-xl mt-[30vh]">Program</h1>
+    <h1 class="text-xl 2xl:text-2xl tracking-tight text-center mt-[30vh]">Program</h1>
 
     <nav class="max-w-3xl text-base px-4 sm:px-6 lg:px-8 mx-auto flex flex-wrap justify-center items-center space-x-8 my-20">
       <button :class="[selectedCategory == 'all' ? '' : 'opacity-40 hover:opacity-100 transition']" @click="selectedCategory = 'all'">Vše</button>
@@ -17,7 +17,7 @@
     </nav>
 
     <section v-for="(program, monthName) in filteredProgram" :key="monthName" v-show="program.length > 0" ref="months" class="scroll-mt-40">
-      <h2 class="text-center text-xl capitalize">{{ monthName }}</h2> 
+      <h2 class="text-center text-xl 2xl:text-2xl tracking-tight capitalize">{{ monthName }}</h2> 
 
       <div class="px-4 sm:px-6 lg:px-8 gap-8 flex flex-wrap my-20">
 

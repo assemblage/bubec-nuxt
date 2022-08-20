@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-center text-xl mt-[30vh]">Aktuality</h1>
+    <h1 class="text-center text-xl 2xl:text-2xl tracking-tight mt-[30vh]">Aktuality</h1>
 
     <nav class="max-w-3xl text-base px-4 sm:px-6 lg:px-8 mx-auto flex justify-center items-center space-x-8 my-20">
       <button v-for="(item, index) in years" :key="index" :class="[selectedYear == item ? '' : 'opacity-40 hover:opacity-100 transition']" @click="selectedYear = item">
