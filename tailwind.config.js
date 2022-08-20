@@ -19,7 +19,9 @@ module.exports = {
       gray: { 900: '#e6e6e6' },
       dark: { 900: '#323232' },
       yellow: { 900: '#FFF621' },
-      black: { 900: '#000000' }
+      black: { 900: '#000000' },
+      red: { 900: '#ff0000' },
+      green: { 900: '#00ee00' },
     }
   },
   plugins: [

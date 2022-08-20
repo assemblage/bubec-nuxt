@@ -6,6 +6,8 @@
 import {getOpenGraphMeta} from '../../../utils/functions';
 
 export default {
+  name: 'ProgramDetail',
+
   data() {
     return {
     }

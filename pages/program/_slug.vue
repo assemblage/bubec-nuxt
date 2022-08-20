@@ -42,6 +42,8 @@
 import {getOpenGraphMeta} from '../../utils/functions';
 
 export default {
+  name: 'ProgramCategory',
+
   data() {
     return {
       selectedYear: 0,

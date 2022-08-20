@@ -43,7 +43,6 @@ export const mutations = {
 export const actions = {
   async nuxtServerInit({ state, dispatch }) {
     await dispatch('getMenus');
-    await dispatch('getArticles');
     await dispatch('getPages');
   },
 

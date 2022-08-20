@@ -20,6 +20,8 @@
 import {getOpenGraphMeta} from '../../utils/functions';
 
 export default {
+  name: 'Articles',
+
   data() {
     return {
       selectedYear: 0

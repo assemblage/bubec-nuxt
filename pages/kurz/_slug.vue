@@ -6,6 +6,8 @@
 import {getOpenGraphMeta} from '../../utils/functions';
 
 export default {
+  name: 'CourseDetail',
+
   data() {
     return {
     }

@@ -2,7 +2,7 @@
   <div class="app-container">
     <CookiePolicyBar />
     <Header />
-    <main class="min-h-[70vh] bg-gray-900 py-28">
+    <main :class="['min-h-[70vh] bg-gray-900', $route.path == '/' ? 'pt-28' : 'py-28']">
       <Nuxt />
     </main>
     <Footer />
@@ -11,6 +11,8 @@
 
 <script>
 export default {
+  name: 'DefaultLayout',
+
   mounted() {
     const googleTagManagerID = this.$config.seo.google.tagManagerID;
 

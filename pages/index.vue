@@ -7,6 +7,8 @@ import {getOpenGraphMeta} from '../utils/functions';
 import { mapState } from 'vuex';
 
 export default {
+  name: 'Homepage',
+
   data() {
     return {
        title: `Úvod`,

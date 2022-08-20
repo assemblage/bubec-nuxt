@@ -33,3 +33,19 @@
 .wp-block-columns {
   gap: 2rem;
 }
+
+.marquee {
+  animation: marquee 70s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0%, 0, 0)
+  }
+  50% {
+    transform: translate3d(-50%, 0, 0)
+  }
+  100% {
+    transform: translate3d(0%, 0, 0)
+  }
+}
