@@ -8,9 +8,14 @@ export const state = () => ({
   program: [],
   programCategories: [],
   courses: [],
+  programYear: new Date().getFullYear()
 })
 
 export const mutations = {
+  updateProgramYear: (state, newData) => {
+    state.programYear = newData;
+  },
+
   updateArticles: (state, newData) => {
     state.articles = newData;
   },
