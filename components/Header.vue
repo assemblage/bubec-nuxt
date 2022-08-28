@@ -1,6 +1,6 @@
 <template>
-  <header class="px-4 sm:px-6 lg:px-8 pb-8 fixed z-50 top-0 left-0 w-full" :class="[ showMenu ? 'bg-yellow-900 h-screen flex flex-col' : 'bg-gray-900']">
-    <div v-if="newArticles" class="relative text-base 2xl:text-lg uppercase flex py-4 h-16 overflow-x-hidden">
+  <header class="pb-8 fixed z-50 top-0 left-0 w-full" :class="[ showMenu ? 'bg-yellow-900 h-screen flex flex-col' : 'bg-gray-900']">
+    <div v-if="newArticles" class="max-w-screen-3xl mx-auto relative text-base 2xl:text-lg uppercase flex py-4 h-16 overflow-x-hidden">
 
       <div class="marquee flex">
 
@@ -15,14 +15,15 @@
       </div>
 
       <button @click="showArticles = !showArticles" class="absolute top-0 right-0 flex h-full">
-        <span class="w-20 bg-gradient-to-l" :class="[ showMenu ? 'from-yellow-900' : 'from-gray-900']"></span>
-        <span class="inline-flex items-center pl-2" :class="[ showMenu ? 'bg-yellow-900' : 'bg-gray-900']">
+        <span class="h-full w-20 bg-gradient-to-l" :class="[ showMenu ? 'from-yellow-900' : 'from-gray-900']"></span>
+        <span class="h-full inline-flex items-center pl-2" :class="[ showMenu ? 'bg-yellow-900' : 'bg-gray-900']">
           <Icons icon="star" classes="h-6 2xl:h-8 w-auto" />
         </span>
+        <span class="h-full w-4 sm:w-6 lg:w-8" :class="[ showMenu ? 'bg-yellow-900' : 'bg-gray-900']"></span>
       </button>
     </div>
 
-    <div class="w-full max-w-screen-2xl mx-auto flex justify-between" :class="[ !newArticles ? 'mt-4' : '']">
+    <div class="w-full max-w-screen-3xl mx-auto flex justify-between px-4 sm:px-6 lg:px-10" :class="[ !newArticles ? 'mt-4' : '']">
       <NuxtLink to="/" :class="[showMenu ? 'invisible' : '']">
         <Icons v-if="!scrolled" icon="logo" classes="h-12 w-auto 2xl:h-20" />
 
@@ -32,16 +33,16 @@
       <button @click="showMenu = !showMenu">
         <Icons v-if="!showMenu" icon="menu" :classes="!scrolled ? 'w-auto h-12 2xl:h-20' : 'w-auto h-8 2xl:h-12'" />
 
-        <Icons v-else icon="close" :classes="!scrolled ? 'w-auto h-12 2xl:h-20' : 'w-auto h-8 2xl:h-12'" />
+        <Icons v-else icon="close" :classes="!scrolled ? 'w-auto h-12 2xl:h-16' : 'w-auto h-8 2xl:h-14'" />
       </button>
     </div> 
 
-    <div v-if="showMenu" class="pt-20 pb-10 bg-yellow-900 flex flex-col grow">
-      <nav class="flex space-x-16">
+    <div v-if="showMenu" class="w-full max-w-screen-3xl mx-auto pt-20 pb-10 px-4 sm:px-6 lg:px-10 bg-yellow-900 flex flex-col grow">
+      <nav class="flex justify-between space-x-16">
         <div v-for="(item, index) in global.menus" :key="index">
-          <h3 class="font-bold text-xl uppercase mb-12">{{ index }}</h3>
+          <h3 class="text-xl uppercase mb-20">{{ index }}</h3>
 
-          <NuxtLink :to="parseUrl(item)" v-for="(item, index) in item" :key="index" class="block text-base mb-4">
+          <NuxtLink :to="parseUrl(item)" v-for="(item, index) in item" :key="index" class="lowercase block text-base mb-4">
             {{ item.title }}
           </NuxtLink>
         </div>
@@ -104,9 +105,18 @@ export default {
       if ( !this.global.featured_posts ) return 
 
       const articles =  this.global.featured_posts.map( item => {
+        let urlBase = '/';
+        if( item.post_type == 'post' ) {
+          urlBase = '/aktuality/';
+        } else if( item.post_type == 'program' ) {
+          urlBase = '/program/detail/';
+        } else if( item.post_type == 'kurz' ) {
+          urlBase = '/kurz/';
+        }
+
         return {
           'title': item.post_title,
-          'link': `/aktuality/${item.post_name}/`,
+          'link': `${urlBase}${item.post_name}/`,
         }
       });
 

@@ -4,7 +4,7 @@
       <img src="/footer.jpg" alt="" class="w-full h-full object-center object-cover">
     </div>  
 
-    <div class="relative text-lg font-bold flex justify-between w-full space-x-8" v-html="footerText">
+    <div class="max-w-screen-3xl mx-auto px-4 sm:px-6 lg:px-8 relative text-lg font-bold flex justify-between w-full space-x-8" v-html="footerText">
     </div>
   </footer>
 </template>

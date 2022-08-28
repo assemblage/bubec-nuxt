@@ -2,7 +2,7 @@
   <div>
     <h1 class="text-xl 2xl:text-2xl tracking-tight text-center mt-[30vh]">Program</h1>
 
-    <nav class="max-w-3xl text-base px-4 sm:px-6 lg:px-8 mx-auto flex flex-wrap justify-center items-center space-x-8 my-20">
+    <nav class="max-w-3xl text-base px-4 sm:px-6 lg:px-8 mx-auto flex flex-wrap justify-center items-center space-x-4 my-20">
       <NuxtLink :to="`/program/`" :key="'all'" :class="[selectedCategory == 'all' ? '' : 'opacity-40 hover:opacity-100 transition']">
         Vše
       </NuxtLink>
@@ -12,7 +12,7 @@
       </NuxtLink>
     </nav>
 
-    <nav class="max-w-3xl text-base px-4 sm:px-6 lg:px-8 mx-auto flex justify-center items-center space-x-8 my-20">
+    <nav class="max-w-3xl text-base px-4 sm:px-6 lg:px-8 mx-auto flex justify-center items-center space-x-4 my-20">
       <button v-for="(item, index) in years" :key="index" :class="[programYear == item ? '' : 'opacity-40 hover:opacity-100 transition']" @click="changeYear(item)">
         {{ item }}
       </button>

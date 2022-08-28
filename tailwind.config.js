@@ -13,7 +13,7 @@ module.exports = {
       base: ['1.5rem', { lineHeight: '2rem' }],
       lg: ['2rem', { lineHeight: '2.25rem' }],
       xl: ['3.125rem', { lineHeight: '3.125rem' }],
-      '2xl': ['6rem', { lineHeight: '6rem' }],
+      '2xl': ['7.5rem', { lineHeight: '7.5rem' }],
     },
     colors: {
       gray: { 900: '#e6e6e6' },
@@ -22,6 +22,19 @@ module.exports = {
       black: { 900: '#000000' },
       red: { 900: '#ff0000' },
       green: { 900: '#00ee00' },
+    },
+    screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+      '3xl': '1920px'
+    },
+    extend: {
+      maxWidth: {
+        'screen-3xl': '1920px',
+      }
     }
   },
   plugins: [

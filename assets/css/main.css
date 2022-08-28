@@ -2,18 +2,16 @@
 
 @font-face {
   font-family: "Akkurat";
-  src: url("../fonts/Akkurat.ttf") format("truetype"),
-  url("../fonts/Akkurat.woff2") format("woff2"),
-  url("../fonts/Akkurat.woff") format("woff");
+  src: url("../fonts/akkuratpro-regular-webfont.woff2") format("woff2"),
+  url("../fonts/akkuratpro-regular-webfont.woff") format("woff");
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Akkurat";
-  src: url("../fonts/Akkurat-bold.ttf") format("truetype"),
-  url("../fonts/Akkurat-bold.woff2") format("woff2"),
-  url("../fonts/Akkurat-bold.woff") format("woff");
+  src: url("../fonts/akkuratpro-bold-webfont.woff2") format("woff2"),
+  url("../fonts/akkuratpro-bold-webfont.woff") format("woff");
   font-weight: 700;
   font-display: swap;
 }
