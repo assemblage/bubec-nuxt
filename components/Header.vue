@@ -2,6 +2,8 @@
   <header class="pb-8 fixed z-50 top-0 left-0 w-full" :class="[ showMenu ? 'bg-yellow-900 h-screen flex flex-col' : 'bg-gray-900']">
     <div v-if="newArticles" class="max-w-screen-3xl mx-auto relative text-sm lg:text-base 2xl:text-lg uppercase flex py-4 h-16 overflow-x-hidden" :class="[showMenu ? 'hidden lg:flex' : '']">
 
+      <span class="z-10 absolute left-0 top-0 h-full w-10 lg:w-20 bg-gradient-to-r" :class="[ showMenu ? 'from-yellow-900' : 'from-gray-900']"></span>
+
       <div class="marquee flex">
 
         <NuxtLink v-show="showArticles" :to="item.link" v-for="(item, index) in newArticles" :key="index" class="whitespace-nowrap">
@@ -16,9 +18,11 @@
 
       <button @click="showArticles = !showArticles" class="absolute top-0 right-0 flex h-full">
         <span class="h-full w-20 bg-gradient-to-l" :class="[ showMenu ? 'from-yellow-900' : 'from-gray-900']"></span>
+
         <span class="h-full inline-flex items-center pl-2" :class="[ showMenu ? 'bg-yellow-900' : 'bg-gray-900']">
           <Icons icon="star" classes="h-6 2xl:h-8 w-auto" />
         </span>
+
         <span class="h-full w-4 sm:w-6 lg:w-8" :class="[ showMenu ? 'bg-yellow-900' : 'bg-gray-900']"></span>
       </button>
     </div>
@@ -43,7 +47,7 @@
           <h3 class="font-bold text-lg 2xl:text-xl uppercase my-5 lg:mt-0 lg:mb-20 cursor-pointer sm:cursor-default" @click=" activeSubmenu = activeSubmenu == index ? null : index">{{ index }}</h3>
 
           <div :class="[ activeSubmenu == index ? '' : 'overflow-hidden max-h-0 sm:overflow-visible sm:max-h-auto' ]">
-            <NuxtLink :to="parseUrl(item)" v-for="(item, index) in item" :key="index" class="lowercase block text-sm lg:text-base mb-3 lg:mb-4">
+            <NuxtLink :to="parseUrl(item)" v-for="(item, index) in item" :key="index" class="lowercase block text-sm lg:text-base mb-3 lg:mb-4 hover:underline decoration-2">
               {{ item.title }}
             </NuxtLink>
           </div>
@@ -62,7 +66,7 @@
           <Icons icon="ig" classes="h-6 lg:h-8 w-auto mr-0 sm:mr-12" />
         </a>
 
-        <a href="mailto:info@bubec.cz" class="text-lg lg:text-xl w-full sm:w-auto my-4 sm:my-0">info@bubec.cz</a>
+        <a href="mailto:info@bubec.cz" class="text-lg lg:text-xl w-full sm:w-auto my-4 sm:my-0 hover:underline decoration-2">info@bubec.cz</a>
       </div>
     </div>
 

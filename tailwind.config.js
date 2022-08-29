@@ -12,7 +12,7 @@ module.exports = {
       sm: ['1.25rem', { lineHeight: '1.75rem' }],
       base: ['1.5rem', { lineHeight: '2rem' }],
       lg: ['2rem', { lineHeight: '2.25rem' }],
-      xl: ['3.125rem', { lineHeight: '3.125rem' }],
+      xl: ['3.125rem', { lineHeight: '3.5rem' }],
       '1xl': ['5rem', { lineHeight: '5rem' }],
       '2xl': ['7.5rem', { lineHeight: '7.5rem' }],
     },
