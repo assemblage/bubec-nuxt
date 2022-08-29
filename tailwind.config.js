@@ -13,6 +13,7 @@ module.exports = {
       base: ['1.5rem', { lineHeight: '2rem' }],
       lg: ['2rem', { lineHeight: '2.25rem' }],
       xl: ['3.125rem', { lineHeight: '3.125rem' }],
+      '1xl': ['5rem', { lineHeight: '5rem' }],
       '2xl': ['7.5rem', { lineHeight: '7.5rem' }],
     },
     colors: {

@@ -1,16 +1,16 @@
 <template>
   <div>
     <section v-for="(program, monthName) in filteredProgram" :key="monthName" v-show="program.length > 0" ref="months" class="scroll-mt-40">
-      <h2 class="text-center text-xl 2xl:text-2xl tracking-tight capitalize">{{ monthName }}</h2> 
+      <h2 class="text-center text-xl lg:text-1xl xl:text-2xl tracking-tight capitalize">{{ monthName }}</h2> 
 
-      <div class="px-4 sm:px-6 lg:px-8 gap-8 flex flex-wrap my-20">
+      <div class="px-4 sm:px-6 lg:px-8 gap-8 flex flex-wrap justify-center lg:justify-start my-20">
 
-        <NuxtLink :to="getLink(item)" class="has-white-background-color has-grey-border-color border py-6 px-10 basis-1/4 flex flex-col text-center min-h-[21rem]" v-for="(item, index) in sortProgram(program)" :key="index">
-          <h3 class="text-base font-bold basis-12">{{ item.title.rendered }}</h3>
+        <NuxtLink :to="getLink(item)" class="has-white-background-color has-grey-border-color border py-6 px-2 basis-1/4 flex flex-col text-center min-h-[16rem] min-w-[16rem] lg:min-h-[21rem] 2xl:min-w-[21rem]" v-for="(item, index) in sortProgram(program)" :key="index">
+          <h3 class="text-sm lg:text-base font-bold basis-12">{{ item.title.rendered }}</h3>
 
           <span class="flex flex-1 items-center justify-center text-xl 2xl:text-2xl tracking-tight">{{ getFormattedDate(item) }}</span>
 
-          <span class="text-base font-bold">{{ getCategoryName(item) }}</span>
+          <span class="text-sm lg:text-base font-bold">{{ getCategoryName(item) }}</span>
         </NuxtLink> 
 
       </div>

@@ -1,14 +1,14 @@
 <template>
   <div>
-    <h1 class="text-center text-xl 2xl:text-2xl tracking-tight mt-[30vh]">Aktuality</h1>
+    <h1 class="text-center text-xl lg:text-1xl xl:text-2xl tracking-tight mt-20 lg:mt-[30vh]">Aktuality</h1>
 
-    <nav class="max-w-3xl text-base px-4 sm:px-6 lg:px-8 mx-auto flex justify-center items-center space-x-8 my-20">
+    <nav class="max-w-3xl text-base px-4 sm:px-6 lg:px-8 mx-auto flex justify-center items-center space-x-4 my-20">
       <button v-for="(item, index) in years" :key="index" :class="[selectedYear == item ? '' : 'opacity-40 hover:opacity-100 transition']" @click="selectedYear = item">
         {{ item }}
       </button>
     </nav>
 
-    <div class="flex flex-col text-base max-w-3xl mx-auto">
+    <div class="flex flex-col text-base max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <NuxtLink :to="getLink(item)" class="py-4 text-center border-b-2 border-black-900 last:border-b-0" v-for="(item, index) in filteredArticles" :key="index">
         {{ item.title.rendered }}&nbsp;–&nbsp;{{ getFormattedDate(item) }}
       </NuxtLink>

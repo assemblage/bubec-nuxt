@@ -1,6 +1,6 @@
 <template>
   <header class="pb-8 fixed z-50 top-0 left-0 w-full" :class="[ showMenu ? 'bg-yellow-900 h-screen flex flex-col' : 'bg-gray-900']">
-    <div v-if="newArticles" class="max-w-screen-3xl mx-auto relative text-base 2xl:text-lg uppercase flex py-4 h-16 overflow-x-hidden">
+    <div v-if="newArticles" class="max-w-screen-3xl mx-auto relative text-sm lg:text-base 2xl:text-lg uppercase flex py-4 h-16 overflow-x-hidden" :class="[showMenu ? 'hidden lg:flex' : '']">
 
       <div class="marquee flex">
 
@@ -30,37 +30,39 @@
         <Icons v-else icon="logo-sm" classes="h-8 2xl:h-12 w-auto" />
       </NuxtLink>
 
-      <button @click="showMenu = !showMenu">
+      <button @click="showMenu = !showMenu" :class="[showMenu ? 'mt-4 lg:mt-0' : '']">
         <Icons v-if="!showMenu" icon="menu" :classes="!scrolled ? 'w-auto h-12 2xl:h-20' : 'w-auto h-8 2xl:h-12'" />
 
         <Icons v-else icon="close" :classes="!scrolled ? 'w-auto h-12 2xl:h-16' : 'w-auto h-8 2xl:h-14'" />
       </button>
     </div> 
 
-    <div v-if="showMenu" class="w-full max-w-screen-3xl mx-auto pt-20 pb-10 px-4 sm:px-6 lg:px-10 bg-yellow-900 flex flex-col grow">
-      <nav class="flex justify-between space-x-16">
+    <div v-if="showMenu" class="w-full max-w-screen-3xl mx-auto lg:pt-20 lg:pb-10 px-4 sm:px-6 lg:px-10 bg-yellow-900 flex flex-col grow h-screen">
+      <nav class="flex justify-between lg:space-x-16 flex-col lg:flex-row items-center lg:items-start text-center lg:text-left">
         <div v-for="(item, index) in global.menus" :key="index">
-          <h3 class="text-xl uppercase mb-20">{{ index }}</h3>
+          <h3 class="font-bold text-lg 2xl:text-xl uppercase my-5 lg:mt-0 lg:mb-20 cursor-pointer sm:cursor-default" @click=" activeSubmenu = activeSubmenu == index ? null : index">{{ index }}</h3>
 
-          <NuxtLink :to="parseUrl(item)" v-for="(item, index) in item" :key="index" class="lowercase block text-base mb-4">
-            {{ item.title }}
-          </NuxtLink>
+          <div :class="[ activeSubmenu == index ? '' : 'overflow-hidden max-h-0 sm:overflow-visible sm:max-h-auto' ]">
+            <NuxtLink :to="parseUrl(item)" v-for="(item, index) in item" :key="index" class="lowercase block text-sm lg:text-base mb-3 lg:mb-4">
+              {{ item.title }}
+            </NuxtLink>
+          </div>
         </div>
       </nav>
 
-      <div class="flex items-center space-x-12 mt-auto">
+      <div class="flex flex-wrap items-center mt-auto">
 
         <a :href="global.social.fb" target="_blank" v-if="global.social.fb">
-          <Icons icon="fb" classes="h-8 w-auto" />
+          <Icons icon="fb" classes="h-6 lg:h-8 w-auto mr-12" />
         </a>
         <a :href="global.social.tw" target="_blank" v-if="global.social.tw">
-          <Icons icon="tw" classes="h-8 w-auto" />
+          <Icons icon="tw" classes="h-6 lg:h-8 w-auto mr-12" />
         </a>
         <a :href="global.social.ig" target="_blank" v-if="global.social.ig">
-          <Icons icon="ig" classes="h-8 w-auto" />
+          <Icons icon="ig" classes="h-6 lg:h-8 w-auto mr-0 sm:mr-12" />
         </a>
 
-        <a href="mailto:info@bubec.cz" class="text-xl">info@bubec.cz</a>
+        <a href="mailto:info@bubec.cz" class="text-lg lg:text-xl w-full sm:w-auto my-4 sm:my-0">info@bubec.cz</a>
       </div>
     </div>
 
@@ -80,7 +82,8 @@ export default {
     return {
       showMenu: false,
       showArticles: true,
-      scrolled: false
+      scrolled: false,
+      activeSubmenu: null,
     }
   },
   methods: { 
