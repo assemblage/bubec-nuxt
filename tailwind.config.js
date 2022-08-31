@@ -7,14 +7,17 @@ module.exports = {
     "./nuxt.config.{js,ts}",
   ],
   theme: {
+    fontFamily: {
+      sans: ['Akkurat Pro', 'sans-serif'],
+    },
     fontSize: {
       xs: ['1rem', { lineHeight: '1.25rem' }],
       sm: ['1.25rem', { lineHeight: '1.75rem' }],
       base: ['1.5rem', { lineHeight: '2rem' }],
-      lg: ['2rem', { lineHeight: '2.25rem' }],
-      xl: ['3.125rem', { lineHeight: '3.5rem' }],
+      lg: ['2rem', { lineHeight: '2.375rem' }],
+      xl: ['3.125rem', { lineHeight: '4.0625rem' }],
       '1xl': ['5rem', { lineHeight: '5rem' }],
-      '2xl': ['7.5rem', { lineHeight: '7.5rem' }],
+      '2xl': ['7.5rem', { lineHeight: '8rem' }],
     },
     colors: {
       gray: { 900: '#e6e6e6' },

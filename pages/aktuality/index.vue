@@ -8,7 +8,7 @@
       </button>
     </nav>
 
-    <div class="flex flex-col text-base max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col text-sm md:text-base max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <NuxtLink :to="getLink(item)" class="py-4 text-center border-b-2 border-black-900 last:border-b-0" v-for="(item, index) in filteredArticles" :key="index">
         {{ item.title.rendered }}&nbsp;–&nbsp;{{ getFormattedDate(item) }}
       </NuxtLink>

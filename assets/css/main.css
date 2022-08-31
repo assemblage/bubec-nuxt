@@ -1,16 +1,27 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Akkurat";
-  src: url("../fonts/akkuratpro-regular-webfont.woff2") format("woff2"),
+  font-family: "Akkurat Pro";
+  src: url("../fonts/AkkuratPro-Light.otf") format("open type"),
+  url("../fonts/akkuratpro-light-webfont.woff2") format("woff2"),
+  url("../fonts/akkuratpro-light-webfont.woff") format("woff");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Akkurat Pro";
+  src: url("../fonts/AkkuratPro-Regular.otf") format("open type"),
+  url("../fonts/akkuratpro-regular-webfont.woff2") format("woff2"),
   url("../fonts/akkuratpro-regular-webfont.woff") format("woff");
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Akkurat";
-  src: url("../fonts/akkuratpro-bold-webfont.woff2") format("woff2"),
+  font-family: "Akkurat Pro";
+  src: url("../fonts/AkkuratPro-Bold.otf") format("open type"), 
+  url("../fonts/akkuratpro-bold-webfont.woff2") format("woff2"),
   url("../fonts/akkuratpro-bold-webfont.woff") format("woff");
   font-weight: 700;
   font-display: swap;
@@ -29,8 +40,26 @@
 }
 
 .wp-block-columns {
-  gap: 2rem;
+  gap: 3rem;
   margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 1280px) { 
+  .wp-block-columns {
+    gap: 2rem;
+  }
+}
+
+@media screen and (max-width: 560px) { 
+  .wp-block-columns {
+    gap: 1rem;
+    margin-bottom: 0;
+  }
+}
+
+.locked {
+  max-height: 100vh;
+  overflow-y: hidden;
 }
 
 .marquee {

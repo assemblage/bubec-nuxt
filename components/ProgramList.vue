@@ -5,10 +5,10 @@
 
       <div class="px-4 sm:px-6 lg:px-8 gap-8 flex flex-wrap justify-center lg:justify-start my-20">
 
-        <NuxtLink :to="getLink(item)" class="has-white-background-color has-grey-border-color border py-6 px-2 basis-1/4 flex flex-col text-center min-h-[16rem] min-w-[16rem] lg:min-h-[21rem] 2xl:min-w-[21rem]" v-for="(item, index) in sortProgram(program)" :key="index">
-          <h3 class="text-sm lg:text-base font-bold basis-12">{{ item.title.rendered }}</h3>
+        <NuxtLink :to="getLink(item)" class="has-white-background-color has-grey-border-color border py-6 px-2 basis-1/4 flex flex-col text-center min-w-[18rem] min-h-[18rem] 2xl:basis-auto md:min-w-[20rem] md:min-h-[20rem] 2xl:!min-h-[22rem] 2xl:!min-w-[22rem] 3xl:!min-h-[26rem] 3xl:!min-w-[26rem]" v-for="(item, index) in sortProgram(program)" :key="index">
+          <h3 class="text-sm lg:text-base font-bold basis-12" v-html="item.title.rendered.replace('–','<br>')"></h3>
 
-          <span class="flex flex-1 items-center justify-center text-xl 2xl:text-2xl tracking-tight">{{ getFormattedDate(item) }}</span>
+          <span class="flex flex-1 items-center justify-center text-xl 2xl:text-2xl tracking-tight md:font-light">{{ getFormattedDate(item) }}</span>
 
           <span class="text-sm lg:text-base font-bold">{{ getCategoryName(item) }}</span>
         </NuxtLink> 

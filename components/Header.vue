@@ -1,10 +1,10 @@
 <template>
-  <header class="pb-8 fixed z-50 top-0 left-0 w-full" :class="[ showMenu ? 'bg-yellow-900 h-screen flex flex-col' : 'bg-gray-900']">
-    <div v-if="newArticles" class="max-w-screen-3xl mx-auto relative text-sm lg:text-base 2xl:text-lg uppercase flex py-4 h-16 overflow-x-hidden" :class="[showMenu ? 'hidden lg:flex' : '']">
+  <header class="pb-4 md:pb-8 fixed z-50 top-0 left-0 w-full" :class="[ showMenu ? 'bg-yellow-900 h-screen flex flex-col' : 'bg-gray-900']">
+    <div v-if="newArticles" class="max-w-screen-3xl mx-auto relative text-xs sm:text-sm lg:text-base 2xl:text-lg uppercase flex py-2 sm:py-4 h-10 md:h-16 overflow-x-hidden" :class="[showMenu ? 'hidden lg:flex' : '']">
 
       <span class="z-10 absolute left-0 top-0 h-full w-10 lg:w-20 bg-gradient-to-r" :class="[ showMenu ? 'from-yellow-900' : 'from-gray-900']"></span>
 
-      <div class="marquee flex">
+      <div class="marquee flex items-center leading-none">
 
         <NuxtLink v-show="showArticles" :to="item.link" v-for="(item, index) in newArticles" :key="index" class="whitespace-nowrap">
           {{ item.title }}<span v-if="index !== newArticles.length - 1" class="px-6">&bull;</span>
@@ -20,7 +20,7 @@
         <span class="h-full w-20 bg-gradient-to-l" :class="[ showMenu ? 'from-yellow-900' : 'from-gray-900']"></span>
 
         <span class="h-full inline-flex items-center pl-2" :class="[ showMenu ? 'bg-yellow-900' : 'bg-gray-900']">
-          <Icons icon="star" classes="h-6 2xl:h-8 w-auto" />
+          <Icons icon="star" classes="h-5 md:h-6 2xl:h-8 w-auto" />
         </span>
 
         <span class="h-full w-4 sm:w-6 lg:w-8" :class="[ showMenu ? 'bg-yellow-900' : 'bg-gray-900']"></span>
@@ -147,10 +147,19 @@ export default {
     })
   },
   watch: {
-    $route () {     
+    $route () { 
       this.$nextTick(() => {
         this.showMenu = false;
       });
+    },
+    showMenu (newVal,oldVal) {
+      const appContainer = document.querySelector('.app-container');
+
+      if( newVal === true ) {
+        appContainer.classList.add('locked');
+      } else {
+        appContainer.classList.remove('locked');
+      }      
     }
   },
   head () {
