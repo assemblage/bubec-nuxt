@@ -19,7 +19,7 @@
       <button @click="showArticles = !showArticles" class="absolute top-0 right-0 flex h-full">
         <span class="h-full w-20 bg-gradient-to-l" :class="[ showMenu ? 'from-yellow-900' : 'from-gray-900']"></span>
 
-        <span class="h-full inline-flex items-center pl-2" :class="[ showMenu ? 'bg-yellow-900' : 'bg-gray-900']">
+        <span class="h-full inline-flex items-center px-2" :class="[ showMenu ? 'bg-yellow-900' : 'bg-gray-900']">
           <Icons icon="star" classes="h-5 md:h-6 2xl:h-8 w-auto" />
         </span>
 
@@ -27,15 +27,15 @@
       </button>
     </div>
 
-    <div class="w-full max-w-screen-3xl mx-auto flex justify-between px-4 sm:px-6 lg:px-10" :class="[ !newArticles ? 'mt-4' : '']">
-      <NuxtLink to="/" :class="[showMenu ? 'invisible' : '']">
-        <Icons v-if="!scrolled" icon="logo" classes="h-12 w-auto 2xl:h-20" />
+    <div class="w-full max-w-screen-3xl mx-auto flex justify-between px-4 sm:px-6 lg:px-10" :class="[ !newArticles ? 'mt-4' : 'pt-3']">
+      <NuxtLink to="/" :class="[showMenu ? 'invisible' : '', 'relative']">
+        <Icons icon="logo" :classes="!scrolled ? 'transition-all h-12 w-auto 2xl:h-20' : 'transition-all opacity-0 h-8 2xl:h-12 w-auto'" />
 
-        <Icons v-else icon="logo-sm" classes="h-8 2xl:h-12 w-auto" />
+        <Icons icon="logo-sm" :classes="!scrolled ? 'absolute opacity-0 h-12 w-auto 2xl:h-20' : 'absolute top-0 left-0 transition-all h-8 2xl:h-12 w-auto'" />
       </NuxtLink>
 
       <button @click="showMenu = !showMenu" :class="[showMenu ? 'mt-4 lg:mt-0' : '']">
-        <Icons v-if="!showMenu" icon="menu" :classes="!scrolled ? 'w-auto h-12 2xl:h-20' : 'w-auto h-8 2xl:h-12'" />
+        <Icons v-if="!showMenu" icon="menu" :classes="!scrolled ? 'transition-all w-auto h-12 2xl:h-20' : 'transition-all w-auto h-8 2xl:h-12'" />
 
         <Icons v-else icon="close" :classes="!scrolled ? 'w-auto h-12 2xl:h-16' : 'w-auto h-8 2xl:h-14'" />
       </button>
@@ -44,12 +44,14 @@
     <div v-if="showMenu" class="w-full max-w-screen-3xl mx-auto lg:pt-20 lg:pb-10 px-4 sm:px-6 lg:px-10 bg-yellow-900 flex flex-col grow h-screen">
       <nav class="flex justify-between lg:space-x-16 flex-col lg:flex-row items-center lg:items-start text-center lg:text-left">
         <div v-for="(item, index) in global.menus" :key="index">
-          <h3 class="font-bold text-lg 2xl:text-xl uppercase my-5 lg:mt-0 lg:mb-20 cursor-pointer sm:cursor-default" @click=" activeSubmenu = activeSubmenu == index ? null : index">{{ index }}</h3>
+          <h3 class="font-bold text-lg 2xl:text-xl uppercase my-5 lg:mt-0 lg:mb-20 cursor-pointer lg:cursor-default" @click=" activeSubmenu = activeSubmenu == index ? null : index">{{ index }}</h3>
 
-          <div :class="[ activeSubmenu == index ? '' : 'overflow-hidden max-h-0 sm:overflow-visible sm:max-h-auto' ]">
-            <NuxtLink :to="parseUrl(item)" v-for="(item, index) in item" :key="index" class="lowercase block text-sm lg:text-base mb-3 lg:mb-4 hover:underline decoration-2">
-              {{ item.title }}
-            </NuxtLink>
+          <div :class="[ activeSubmenu == index ? '' : 'overflow-hidden max-h-0 lg:overflow-visible lg:max-h-auto' ]">
+            <span v-for="(item, index) in item" :key="index" class="lowercase block text-sm lg:text-base mb-3 lg:mb-4" @click="showMenu = false">
+              <NuxtLink :to="parseUrl(item)" class="hover:underline decoration-2">
+                {{ item.title }}
+              </NuxtLink>
+            </span>
           </div>
         </div>
       </nav>
@@ -103,7 +105,7 @@ export default {
       }
 
       return url.charAt(url.length - 1) === '/' ? url : `${url}/`;
-    } 
+    }
   },
   computed: {
     ...mapState(['global']),
