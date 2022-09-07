@@ -19,7 +19,7 @@
       <button @click="showArticles = !showArticles" class="absolute top-0 right-0 flex h-full">
         <span class="h-full w-20 bg-gradient-to-l" :class="[ showMenu ? 'from-yellow-900' : 'from-gray-900']"></span>
 
-        <span class="h-full inline-flex items-center px-2" :class="[ showMenu ? 'bg-yellow-900' : 'bg-gray-900']">
+        <span class="h-full inline-flex items-center lg:px-2" :class="[ showMenu ? 'bg-yellow-900' : 'bg-gray-900']">
           <Icons icon="star" classes="h-5 md:h-6 2xl:h-8 w-auto" />
         </span>
 
