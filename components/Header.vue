@@ -41,8 +41,8 @@
       </button>
     </div> 
 
-    <div v-if="showMenu" class="w-full max-w-screen-3xl mx-auto lg:pt-20 lg:pb-10 px-4 sm:px-6 lg:px-10 bg-yellow-900 flex flex-col grow h-screen">
-      <nav class="flex justify-between lg:space-x-16 flex-col lg:flex-row items-center lg:items-start text-center lg:text-left">
+    <div v-if="showMenu" class="w-full max-w-screen-3xl mx-auto lg:pt-20 lg:pb-10 px-4 sm:px-6 lg:px-10 bg-yellow-900 flex flex-col grow h-screen overflow-y-auto">
+      <nav class="flex justify-between lg:space-x-16 flex-col lg:flex-row items-center lg:items-start text-center lg:text-left mb-8 md:mb-0">
         <div v-for="(item, index) in global.menus" :key="index">
           <h3 class="font-bold text-lg 2xl:text-xl uppercase my-5 lg:mt-0 lg:mb-20 cursor-pointer lg:cursor-default" @click=" activeSubmenu = activeSubmenu == index ? null : index">{{ index }}</h3>
 
@@ -56,19 +56,25 @@
         </div>
       </nav>
 
-      <div class="flex flex-wrap items-center mt-auto">
+      <div class="flex flex-col md:flex-row md:items-center mt-auto px-6 pb-4 md:p-0">
 
-        <a :href="global.social.fb" target="_blank" v-if="global.social.fb">
-          <Icons icon="fb" classes="h-6 lg:h-8 w-auto mr-12" />
-        </a>
-        <a :href="global.social.tw" target="_blank" v-if="global.social.tw">
-          <Icons icon="tw" classes="h-6 lg:h-8 w-auto mr-12" />
-        </a>
-        <a :href="global.social.ig" target="_blank" v-if="global.social.ig">
-          <Icons icon="ig" classes="h-6 lg:h-8 w-auto mr-0 sm:mr-12" />
-        </a>
+        <div class="flex mb-8 md:mb-0 pl-4 md:pl-0">
+          <a :href="global.social.fb" target="_blank" v-if="global.social.fb">
+            <Icons icon="fb" classes="h-8 w-auto mr-12" />
+          </a>
+          <a :href="global.social.tw" target="_blank" v-if="global.social.tw">
+            <Icons icon="tw" classes="h-8 w-auto mr-12" />
+          </a>
+          <a :href="global.social.ig" target="_blank" v-if="global.social.ig">
+            <Icons icon="ig" classes="h-8 w-auto mr-0 sm:mr-12" />
+          </a>
+        </div>
 
-        <a href="mailto:info@bubec.cz" class="text-lg lg:text-xl w-full sm:w-auto my-4 sm:my-0 hover:underline decoration-2">info@bubec.cz</a>
+        <div class="flex basis-full">
+          <a href="mailto:info@bubec.cz" class="text-sm md:text-lg lg:text-xl w-full sm:w-auto my-4 sm:my-0 hover:underline decoration-2">info@bubec.cz</a>
+
+          <button class="ml-auto text-sm md:text-base">English</button>
+        </div>
       </div>
     </div>
 
