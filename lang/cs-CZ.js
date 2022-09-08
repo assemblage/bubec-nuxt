@@ -8,6 +8,15 @@ export default {
   imageAlternativeTexts: {
 
   },
+  'Bubec' : 'Bubec',
+  'Výstavy' : 'Výstavy',
+  'Creative' : 'Creative',
+  'Program' : 'Program',
+  'Zahrada' : 'Zahrada',
+  news : 'Aktuality',
+  events : 'Program',
+  all: 'Vše',
+  noEvents: 'Pro zvolené parametry jsme nenašli žádný program&hellip;',
   seo: {
     title: 'bubec',
     description: 'test',

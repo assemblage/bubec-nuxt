@@ -28,7 +28,7 @@
     </div>
 
     <div class="w-full max-w-screen-3xl mx-auto flex justify-between px-4 sm:px-6 lg:px-10" :class="[ !newArticles ? 'mt-4' : 'pt-3']">
-      <NuxtLink to="/" :class="[showMenu ? 'invisible' : '', 'relative']">
+      <NuxtLink :to=" activeLocale == 'en' ? '/en/' : '/'" :class="[showMenu ? 'invisible' : '', 'relative']">
         <Icons icon="logo" :classes="!scrolled ? 'transition-all h-12 w-auto 2xl:h-20' : 'transition-all opacity-0 h-8 2xl:h-12 w-auto'" />
 
         <Icons icon="logo-sm" :classes="!scrolled ? 'absolute opacity-0 h-12 w-auto 2xl:h-20' : 'absolute top-0 left-0 transition-all h-8 2xl:h-12 w-auto'" />
@@ -43,8 +43,8 @@
 
     <div v-if="showMenu" class="w-full max-w-screen-3xl mx-auto lg:pt-20 lg:pb-10 px-4 sm:px-6 lg:px-10 bg-yellow-900 flex flex-col grow h-screen overflow-y-auto">
       <nav class="flex justify-between lg:space-x-16 flex-col lg:flex-row items-center lg:items-start text-center lg:text-left mb-8 md:mb-0">
-        <div v-for="(item, index) in global.menus" :key="index">
-          <h3 class="font-bold text-lg 2xl:text-xl uppercase my-5 lg:mt-0 lg:mb-20 cursor-pointer lg:cursor-default" @click=" activeSubmenu = activeSubmenu == index ? null : index">{{ index }}</h3>
+        <div v-for="(item, index) in global.menus[activeLocale]" :key="index">
+          <h3 class="font-bold text-lg 2xl:text-xl uppercase my-5 lg:mt-0 lg:mb-20 cursor-pointer lg:cursor-default" @click=" activeSubmenu = activeSubmenu == index ? null : index">{{ $t(index) }}</h3>
 
           <div :class="[ activeSubmenu == index ? '' : 'overflow-hidden max-h-0 lg:overflow-visible lg:max-h-auto' ]">
             <span v-for="(item, index) in item" :key="index" class="lowercase block text-sm lg:text-base mb-3 lg:mb-4" @click="showMenu = false">
@@ -73,7 +73,9 @@
         <div class="flex basis-full">
           <a href="mailto:info@bubec.cz" class="text-sm md:text-lg lg:text-xl w-full sm:w-auto my-4 sm:my-0 hover:underline decoration-2">info@bubec.cz</a>
 
-          <button class="ml-auto text-sm md:text-base">English</button>
+          <NuxtLink v-if="activeLocale == 'cs'" :to="'/en/'" class="ml-auto text-sm md:text-base">English</NuxtLink>
+
+          <NuxtLink v-if="activeLocale == 'en'" :to="'/'" class="ml-auto text-sm md:text-base">Česky</NuxtLink>
         </div>
       </div>
     </div>
@@ -117,9 +119,13 @@ export default {
     ...mapState(['global']),
 
     newArticles() {
-      if ( !this.global.featured_posts ) return 
+      if ( !this.global.featured_posts ) return
 
-      const articles =  this.global.featured_posts.map( item => {
+      const featured_posts = this.activeLocale == 'en' ? this.global.featured_posts_en : this.global.featured_posts;   
+      
+      if ( !featured_posts ) return
+
+      const articles =  featured_posts.map( item => {
         let urlBase = '/';
         if( item.post_type == 'post' ) {
           urlBase = '/aktuality/';

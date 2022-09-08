@@ -13,15 +13,24 @@ const getRoutes = async () => {
   const articlesRes = await getArticlesFactory(projectConfig);
 
   const articlesRoutes = articlesRes.map(item => {
-    return {
-      route: `/aktuality/${item.slug}/`,
-      payload: {
-        articles: articlesRes,
-        articleDetail: item,
-      }
-    };
+    if( item.link.indexOf('/en/') !== -1 ) {
+      return {
+        route: `/en/news/${item.slug}/`,
+        payload: {
+          articles: articlesRes,
+          articleDetail: item,
+        }
+      };
+    } else {
+      return {
+        route: `/aktuality/${item.slug}/`,
+        payload: {
+          articles: articlesRes,
+          articleDetail: item,
+        }
+      };
+    }
   });
-
 
   const pagesRes = await getPagesFactory(projectConfig);
 
@@ -38,38 +47,72 @@ const getRoutes = async () => {
   const programRes = await getProgramFactory(projectConfig);
 
   const programCategoriesRoutes = programCategoriesRes.map(item => {
-    return {
-      route: `/program/${item.slug}/`,
-      payload: {
-        categoryDetail: item,
-        programCategories: programCategoriesRes,
-        program: programRes,
-      }
-    };
+    if( item.link.indexOf('/en/') !== -1 ) {
+      return {
+        route: `/en/events/${item.slug}/`,
+        payload: {
+          categoryDetail: item,
+          programCategories: programCategoriesRes,
+          program: programRes,
+        }
+      };
+    } else {
+      return {
+        route: `/program/${item.slug}/`,
+        payload: {
+          categoryDetail: item,
+          programCategories: programCategoriesRes,
+          program: programRes,
+        }
+      };
+    }
   });
 
   const programRoutes = programRes.map(item => {
-    return {
-      route: `/program/detail/${item.slug}/`,
-      payload: {
-        programDetail: item,
-        program: programRes,
-        programCategories: programCategoriesRes
-      }
-    };
+
+    if( item.link.indexOf('/en/') !== -1 ) {
+      return {
+        route: `/en/events/detail/${item.slug}/`,
+        payload: {
+          programDetail: item,
+          program: programRes,
+          programCategories: programCategoriesRes
+        }
+      };
+    } else {
+      return {
+        route: `/program/detail/${item.slug}/`,
+        payload: {
+          programDetail: item,
+          program: programRes,
+          programCategories: programCategoriesRes
+        }
+      };
+    }
   });
 
   // Courses
   const coursesRes = await getCoursesFactory(projectConfig);   
   
   const coursesRoutes = coursesRes.map(item => {
-    return {
-      route: `/kurz/${item.slug}/`,
-      payload: {
-        courseDetail: item,
-        courses: coursesRes,
-      }
-    };
+
+    if( item.link.indexOf('/en/') !== -1 ) {
+      return {
+        route: `/en/course/${item.slug}/`,
+        payload: {
+          courseDetail: item,
+          courses: coursesRes,
+        }
+      };
+    } else {
+      return {
+        route: `/kurz/${item.slug}/`,
+        payload: {
+          courseDetail: item,
+          courses: coursesRes,
+        }
+      };
+    }
   });
 
   routes = [
@@ -181,6 +224,7 @@ export default async () => {
         baseURL: !dev ? config.baseURL.production : config.baseURL.development, /* :TODO: must set because of SEO! */
         locales: [
           {code: 'cs', iso: 'cs-cz', file: 'cs-CZ.js', dir: 'ltr'},
+          {code: 'en', iso: 'en-gb', file: 'en-GB.js', dir: 'ltr'}
         ],
         lazy: true,
         langDir: '~lang/',
@@ -188,13 +232,32 @@ export default async () => {
         vueI18n: {
           fallbackLocale: 'cs',
         },
-        detectBrowserLanguage: {
-          useCookie: true,
-          cookieKey: 'i18n_redirected',
-          redirectOn: 'root',  // recommended
-        }
+        detectBrowserLanguage: false
       }],
     ],
+    i18n: {
+      parsePages: false,
+      pages: {
+        'aktuality/index': {
+          en: '/news/',
+        },
+        'aktuality/_slug': {
+          en: '/news/:slug/',
+        },
+        'program/index': {
+          en: '/events/',
+        },
+        'program/_slug': {
+          en: '/events/:slug/',
+        },
+        'program/detail/_slug': {
+          en: '/events/detail/:slug/',
+        },
+        'kurz/_slug': {
+          en: '/course/:slug/',
+        },
+      }
+    },
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
       '@/assets/css/main.css',

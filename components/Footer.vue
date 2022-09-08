@@ -27,7 +27,7 @@ export default {
     ...mapState(['global']),
 
     footerText() {
-      return this.global.footer_text;
+      return this.$i18n.locale == 'en' ? this.global.footer_text_en : this.global.footer_text;
     }
   },
 }

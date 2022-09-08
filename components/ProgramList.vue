@@ -16,7 +16,7 @@
       </div>
     </section>
 
-    <p v-if="filteredProgramTotal == 0" class="text-base text-center">Pro zvolené parametry jsme nenašli žádný program&hellip;</p>
+    <p v-if="filteredProgramTotal == 0" class="text-base text-center" v-html="$t('noEvents')"></p>
   </div>
 </template>
 
@@ -39,7 +39,7 @@ export default {
 
   methods: {
     getLink( item ) {
-      return `/program/detail/${item.slug}/`;
+      return this.$i18n.locale == 'en' ? `/en/events/detail/${item.slug}/` : `/program/detail/${item.slug}/`;
     },
 
     getFormattedDate( item ) {
@@ -95,26 +95,45 @@ export default {
         }       
       });
 
-      const programByMonths = {
-        'leden': [],
-        'únor': [],
-        'březen': [],
-        'duben': [],
-        'květen': [],
-        'červen': [],
-        'červenec': [],
-        'srpen': [],
-        'září': [],
-        'říjen': [],
-        'listopad': [],
-        'prosinec': []
-      };
+      let programByMonths = {};
+
+      if( this.$i18n.locale == 'en' ) {
+        programByMonths = {
+          'january': [],
+          'february': [],
+          'march': [],
+          'april': [],
+          'may': [],
+          'june': [],
+          'july': [],
+          'august': [],
+          'september': [],
+          'october': [],
+          'november': [],
+          'december': []
+        };
+      } else {
+        programByMonths = {
+          'leden': [],
+          'únor': [],
+          'březen': [],
+          'duben': [],
+          'květen': [],
+          'červen': [],
+          'červenec': [],
+          'srpen': [],
+          'září': [],
+          'říjen': [],
+          'listopad': [],
+          'prosinec': []
+        };
+      }
 
       program.forEach( item => {
         const date = new Date(item.acf.event_date);
         const options = { month: 'long' };
 
-        const monthName = date.toLocaleDateString("cs-CZ", options); 
+        const monthName = this.$i18n.locale == 'en' ? date.toLocaleDateString("en-GB", options).toLowerCase() : date.toLocaleDateString("cs-CZ", options);
 
         programByMonths[monthName].push(item);
       });

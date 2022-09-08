@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-center text-xl lg:text-1xl xl:text-2xl tracking-tight mt-20 lg:mt-[30vh]">Aktuality</h1>
+    <h1 class="text-center text-xl lg:text-1xl xl:text-2xl tracking-tight mt-20 lg:mt-[30vh]">{{ $t('news') }}</h1>
 
     <nav class="max-w-3xl text-base px-4 sm:px-6 lg:px-8 mx-auto flex justify-center items-center space-x-4 my-20">
       <button v-for="(item, index) in years" :key="index" :class="[selectedYear == item ? '' : 'opacity-40 hover:opacity-100 transition']" @click="selectedYear = item">
@@ -28,9 +28,17 @@ export default {
     }
   },
 
-  async asyncData({params, error, payload, store, $axios}) {
+  async asyncData({app, params, error, payload, store, $axios}) {
       if (payload) {
-        const articles = payload.articles;
+        let articles = payload.articles;
+
+        articles = articles.filter( item => {
+          if( app.i18n.locale == 'en' ) {
+            return item.link.indexOf('/en/') !== -1;
+          } else {
+            return item.link.indexOf('/en/') == -1;
+          }
+        });
 
         return {
           articles
@@ -38,12 +46,20 @@ export default {
       } else {
         await store.dispatch("getArticles");
 
-        const articles = store.state.articles;   
+        let articles = store.state.articles;  
+        
+        articles = articles.filter( item => {
+          if( app.i18n.locale == 'en' ) {
+            return item.link.indexOf('/en/') !== -1;
+          } else {
+            return item.link.indexOf('/en/') == -1;
+          }
+        });
 
         return {
           articles
         }
-      }
+      }      
   },
 
   methods: {
@@ -54,13 +70,13 @@ export default {
         return date.toLocaleDateString("cs-CZ", options);
     },
     getLink( item ) {
-      return `/aktuality/${item.slug}/`;
+      return this.$i18n.locale == 'en' ? `/en/news/${item.slug}/` : `/aktuality/${item.slug}/`;
     }     
   },
 
   computed: {
     title() {
-      return 'Aktuality';
+      return this.$t('news');
     },
 
     years() {

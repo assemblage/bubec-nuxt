@@ -24,11 +24,27 @@ export default {
     }
   },
 
-  async asyncData({params, error, payload, store, $axios}) {
+  async asyncData({app, params, error, payload, store, $axios}) {
       if (payload) {
-        const program = payload.program;
-        const programCategories = payload.programCategories;
+        let program = payload.program;
+        let programCategories = payload.programCategories;
         const categoryDetail = payload.categoryDetail;
+
+        program = program.filter( item => {
+          if( app.i18n.locale == 'en' ) {
+            return item.link.indexOf('/en/') !== -1;
+          } else {
+            return item.link.indexOf('/en/') == -1;
+          }
+        });
+
+        programCategories = programCategories.filter( item => {
+          if( app.i18n.locale == 'en' ) {
+            return item.link.indexOf('/en/') !== -1;
+          } else {
+            return item.link.indexOf('/en/') == -1;
+          }
+        });
 
         return {
           program,
@@ -39,9 +55,25 @@ export default {
         await store.dispatch("getProgram");
         await store.dispatch("getProgramCategories");
 
-        const program = store.state.program;  
-        const programCategories = store.state.programCategories; 
+        let program = store.state.program;  
+        let programCategories = store.state.programCategories; 
         const categoryDetail = [...store.state.programCategories].filter(item => item.slug == params.slug)[0];
+
+        program = program.filter( item => {
+          if( app.i18n.locale == 'en' ) {
+            return item.link.indexOf('/en/') !== -1;
+          } else {
+            return item.link.indexOf('/en/') == -1;
+          }
+        });
+
+        programCategories = programCategories.filter( item => {
+          if( app.i18n.locale == 'en' ) {
+            return item.link.indexOf('/en/') !== -1;
+          } else {
+            return item.link.indexOf('/en/') == -1;
+          }
+        });
 
         return {
           program,

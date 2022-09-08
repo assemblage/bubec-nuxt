@@ -22,7 +22,8 @@ export default {
       if ( !this.pages ) return;
 
       const homepage = this.pages.filter( item => {
-        return item.link == this.$config.apiBaseUrl
+        const url = this.$i18n.locale == 'en' ? this.$config.apiBaseUrl + 'en/' : this.$config.apiBaseUrl;
+        return item.link == url;
       })
 
       return homepage[0].content.rendered;

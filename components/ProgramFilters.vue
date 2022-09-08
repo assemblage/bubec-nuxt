@@ -1,13 +1,14 @@
 <template>
   <div>
-    <h1 class="text-xl lg:text-1xl xl:text-2xl tracking-tight text-center mt-20 lg:mt-[30vh]">Program</h1>
+    <h1 class="text-xl lg:text-1xl xl:text-2xl tracking-tight text-center mt-20 lg:mt-[30vh]">{{ $t('events') }}</h1>
 
-    <nav class="max-w-3xl text-base px-4 sm:px-6 lg:px-8 mx-auto flex flex-wrap justify-center items-center space-x-4 my-20">
-      <NuxtLink :to="`/program/`" :key="'all'" :class="[selectedCategory == 'all' ? '' : 'opacity-40 hover:opacity-100 transition']">
-        Vše
+    <nav class="max-w-3xl text-base px-4 sm:px-6 lg:px-8 mx-auto flex flex-wrap justify-center items-center space-x-4 my-20">      
+
+      <NuxtLink :to="$i18n.locale == 'en' ? `/en/events/` : `/program/`" :key="'all'" :class="[selectedCategory == 'all' ? '' : 'opacity-40 hover:opacity-100 transition']">
+        {{ $t('all') }}
       </NuxtLink>
 
-      <NuxtLink :to="`/program/${item.slug}/`" v-for="(item, index) in programCategories" :key="index" :class="[selectedCategory == item.id ? '' : 'opacity-40 hover:opacity-100 transition']">
+      <NuxtLink :to="$i18n.locale == 'en' ? `/en/events/${item.slug}/` : `/program/${item.slug}/`" v-for="(item, index) in programCategories" :key="index" :class="[selectedCategory == item.id ? '' : 'opacity-40 hover:opacity-100 transition']">
         {{ item.name }}
       </NuxtLink>
     </nav>
