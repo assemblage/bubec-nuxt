@@ -29,15 +29,15 @@
 
     <div class="w-full max-w-screen-3xl mx-auto flex justify-between px-4 sm:px-6 lg:px-10" :class="[ !newArticles ? 'mt-4' : 'pt-3']">
       <NuxtLink :to=" activeLocale == 'en' ? '/en/' : '/'" :class="[showMenu ? 'invisible' : '', 'relative']">
-        <Icons icon="logo" :classes="!scrolled ? 'transition-all h-12 w-auto 2xl:h-20' : 'transition-all opacity-0 h-8 2xl:h-12 w-auto'" />
+        <Icons icon="logo" :classes="!scrolled ? 'transition-all h-10 md:h-12 w-auto 2xl:h-20' : 'transition-all opacity-0 h-8 2xl:h-12 w-auto'" />
 
-        <Icons icon="logo-sm" :classes="!scrolled ? 'absolute opacity-0 h-12 w-auto 2xl:h-20' : 'absolute top-0 left-0 transition-all h-8 2xl:h-12 w-auto'" />
+        <Icons icon="logo-sm" :classes="!scrolled ? 'absolute opacity-0 h-10 md:h-12 w-auto 2xl:h-20' : 'absolute top-0 left-0 transition-all h-8 2xl:h-12 w-auto'" />
       </NuxtLink>
 
       <button @click="showMenu = !showMenu" :class="[showMenu ? 'mt-4 lg:mt-0' : '']">
-        <Icons v-if="!showMenu" icon="menu" :classes="!scrolled ? 'transition-all w-auto h-12 2xl:h-20' : 'transition-all w-auto h-8 2xl:h-12'" />
+        <Icons v-if="!showMenu" icon="menu" :classes="!scrolled ? 'transition-all w-auto h-10 md:h-12 2xl:h-20' : 'transition-all w-auto h-8 2xl:h-12'" />
 
-        <Icons v-else icon="close" :classes="!scrolled ? 'w-auto h-12 2xl:h-16' : 'w-auto h-8 2xl:h-14'" />
+        <Icons v-else icon="close" :classes="!scrolled ? 'w-auto h-10 md:h-12 2xl:h-16' : 'w-auto h-8 2xl:h-14'" />
       </button>
     </div> 
 
@@ -58,7 +58,7 @@
 
       <div class="flex flex-col md:flex-row md:items-center mt-auto px-6 pb-4 md:p-0">
 
-        <div class="flex mb-8 md:mb-0 pl-4 md:pl-0">
+        <div class="flex mb-12 md:mb-0 pl-4 md:pl-0">
           <a :href="global.social.fb" target="_blank" v-if="global.social.fb">
             <Icons icon="fb" classes="h-8 w-auto mr-12" />
           </a>
@@ -71,7 +71,7 @@
         </div>
 
         <div class="flex basis-full">
-          <a href="mailto:info@bubec.cz" class="text-sm md:text-lg lg:text-xl w-full sm:w-auto my-4 sm:my-0 hover:underline decoration-2">info@bubec.cz</a>
+          <a href="mailto:info@bubec.cz" class="text-sm md:text-lg lg:text-xl w-full sm:w-auto hover:underline decoration-2">info@bubec.cz</a>
 
           <NuxtLink v-if="activeLocale == 'cs'" :to="'/en/'" class="ml-auto text-sm md:text-base">English</NuxtLink>
 

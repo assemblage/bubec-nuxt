@@ -8,7 +8,9 @@
         <NuxtLink :to="getLink(item)" class="has-white-background-color has-grey-border-color border py-6 px-2 basis-1/4 flex flex-col text-center min-w-[18rem] min-h-[18rem] 2xl:basis-auto md:min-w-[20rem] md:min-h-[20rem] 2xl:!min-h-[22rem] 2xl:!min-w-[22rem] 3xl:!min-h-[26rem] 3xl:!min-w-[26rem]" v-for="(item, index) in sortProgram(program)" :key="index">
           <h3 class="text-sm lg:text-base font-bold basis-12" v-html="item.title.rendered.replace('–','<br>')"></h3>
 
-          <span class="flex flex-1 items-center justify-center text-xl 2xl:text-2xl tracking-tight md:font-light">{{ getFormattedDate(item) }}</span>
+          <span class="flex flex-1 items-center justify-center tracking-tight md:font-light" :class="[ item.acf.event_end ? 'text-lg xl:text-xl whitespace-nowrap' : 'text-1xl 2xl:text-2xl' ]">
+            {{ getFormattedDate(item) }}
+          </span>
 
           <span class="text-sm lg:text-base font-bold">{{ getCategoryName(item) }}</span>
         </NuxtLink> 
@@ -45,7 +47,13 @@ export default {
     getFormattedDate( item ) {
         const date = new Date(item.acf.event_date);
 
-        return ("" + date.getDate()).slice(-2)+ "/" + ("" + (date.getMonth()+1)).slice(-2);
+        if( item.acf.event_end ) {
+          const dateEnd = new Date(item.acf.event_end);
+
+          return ("" + date.getDate()).slice(-2)+ "/" + ("" + (date.getMonth()+1)).slice(-2) + " – " + ("" + dateEnd.getDate()).slice(-2)+ "/" + ("" + (dateEnd.getMonth()+1)).slice(-2);
+        } else {
+          return ("" + date.getDate()).slice(-2)+ "/" + ("" + (date.getMonth()+1)).slice(-2);
+        }       
     },
 
     getCategoryName( item ) {
@@ -135,7 +143,24 @@ export default {
 
         const monthName = this.$i18n.locale == 'en' ? date.toLocaleDateString("en-GB", options).toLowerCase() : date.toLocaleDateString("cs-CZ", options);
 
-        programByMonths[monthName].push(item);
+        if( item.acf.event_end ) {
+          const dateEnd = new Date(item.acf.event_end);
+          const monthNameEnd = this.$i18n.locale == 'en' ? dateEnd.toLocaleDateString("en-GB", options).toLowerCase() : dateEnd.toLocaleDateString("cs-CZ", options);
+
+          let started = false;
+
+          for (const [monthKey, monthItems] of Object.entries(programByMonths)) {
+            if ( monthKey == monthName ) started = true;
+            if ( monthKey == monthNameEnd ) break;
+
+            if( started ) {
+              programByMonths[monthKey].push(item);
+            }
+          }
+          
+        } else {
+          programByMonths[monthName].push(item);
+        }        
       });
 
       return programByMonths;

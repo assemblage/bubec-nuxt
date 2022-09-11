@@ -2,7 +2,7 @@
   <div class="app-container">
     <CookiePolicyBar />
     <Header />
-    <main :class="['min-h-[70vh] bg-gray-900 tracking-wide', ($route.path == '/' || $route.path == '/en/')  ? 'pt-28' : 'py-28']">
+    <main :class="['min-h-[70vh] bg-gray-900 sm:tracking-wide antialiased', ($route.path == '/' || $route.path == '/en/')  ? 'pt-28' : 'py-28']">
       <Nuxt />
     </main>
     <Footer />
