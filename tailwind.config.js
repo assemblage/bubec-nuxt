@@ -11,11 +11,12 @@ module.exports = {
       sans: ['Akkurat Pro', 'sans-serif'],
     },
     fontSize: {
+      xxs: ['.75rem', { lineHeight: '1rem' }],
       xs: ['1rem', { lineHeight: '1.25rem' }],
       sm: ['1.25rem', { lineHeight: '1.75rem' }],
       base: ['1.5rem', { lineHeight: '2rem' }],
       lg: ['2rem', { lineHeight: '2.375rem' }],
-      lgx: ['2.5rem', { lineHeight: '2.75rem' }],
+      lgx: ['2.3125rem', { lineHeight: '2.4rem' }],
       xl: ['3.125rem', { lineHeight: '4.0625rem' }],
       '1xl': ['5rem', { lineHeight: '5rem' }],
       '2xl': ['7.5rem', { lineHeight: '8rem' }],

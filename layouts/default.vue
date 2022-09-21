@@ -6,6 +6,8 @@
       <Nuxt />
     </main>
     <Footer />
+
+    <span style="display:none !important;" class="sm:block"></span>
   </div>
 </template>
 

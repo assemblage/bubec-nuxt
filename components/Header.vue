@@ -29,22 +29,22 @@
 
     <div class="w-full max-w-screen-3xl mx-auto flex justify-between px-4 sm:px-6 lg:px-10" :class="[ !newArticles ? 'mt-4' : 'pt-3']">
       <NuxtLink :to=" activeLocale == 'en' ? '/en/' : '/'" :class="[showMenu ? 'invisible' : '', 'relative']">
-        <Icons icon="logo" :classes="!scrolled ? 'transition-all h-10 md:h-12 w-auto 2xl:h-20' : 'transition-all opacity-0 h-8 2xl:h-12 w-auto'" />
+        <Icons icon="logo" :classes="!scrolled ? 'transition-all h-8 md:h-12 w-auto 2xl:h-20' : 'transition-all opacity-0 h-8 2xl:h-12 w-auto'" />
 
-        <Icons icon="logo-sm" :classes="!scrolled ? 'absolute opacity-0 h-10 md:h-12 w-auto 2xl:h-20' : 'absolute top-0 left-0 transition-all h-8 2xl:h-12 w-auto'" />
+        <Icons icon="logo-sm" :classes="!scrolled ? 'absolute opacity-0 h-8 md:h-12 w-auto 2xl:h-20' : 'absolute top-0 left-0 transition-all h-8 2xl:h-12 w-auto'" />
       </NuxtLink>
 
       <button @click="showMenu = !showMenu" :class="[showMenu ? 'mt-4 lg:mt-0' : '']">
-        <Icons v-if="!showMenu" icon="menu" :classes="!scrolled ? 'transition-all w-auto h-10 md:h-12 2xl:h-20' : 'transition-all w-auto h-8 2xl:h-12'" />
+        <Icons v-if="!showMenu" icon="menu" :classes="!scrolled ? 'transition-all w-auto h-8 md:h-12 2xl:h-20' : 'transition-all w-auto h-8 2xl:h-12'" />
 
-        <Icons v-else icon="close" :classes="!scrolled ? 'w-auto h-10 md:h-12 2xl:h-16' : 'w-auto h-8 2xl:h-14'" />
+        <Icons v-else icon="close" :classes="!scrolled ? 'w-auto h-8 md:h-12 2xl:h-16' : 'w-auto h-8 2xl:h-14'" />
       </button>
     </div> 
 
     <div v-if="showMenu" class="w-full max-w-screen-3xl mx-auto lg:pt-20 lg:pb-10 px-4 sm:px-6 lg:px-10 bg-yellow-900 flex flex-col grow h-screen overflow-y-auto">
       <nav class="flex justify-between lg:space-x-16 flex-col lg:flex-row items-center lg:items-start text-center lg:text-left mb-8 md:mb-0">
         <div v-for="(item, index) in global.menus[activeLocale]" :key="index">
-          <h3 class="font-bold text-lg 2xl:text-xl uppercase my-5 lg:mt-0 lg:mb-20 cursor-pointer lg:cursor-default" @click=" activeSubmenu = activeSubmenu == index ? null : index">{{ $t(index) }}</h3>
+          <h3 class="font-bold text-base sm:text-lg 2xl:text-xl uppercase my-3 sm:my-5 lg:mt-0 lg:mb-20 cursor-pointer lg:cursor-default" @click=" activeSubmenu = activeSubmenu == index ? null : index">{{ $t(index) }}</h3>
 
           <div :class="[ activeSubmenu == index ? '' : 'overflow-hidden max-h-0 lg:overflow-visible lg:max-h-auto' ]">
             <span v-for="(item, index) in item" :key="index" class="lowercase block text-sm lg:text-base mb-3 lg:mb-4" @click="showMenu = false">
@@ -58,15 +58,15 @@
 
       <div class="flex flex-col md:flex-row md:items-center mt-auto px-6 pb-4 md:p-0">
 
-        <div class="flex mb-12 md:mb-0 pl-4 md:pl-0">
+        <div class="flex mb-12 md:mb-0 justify-center md:justify-start">
           <a :href="global.social.fb" target="_blank" v-if="global.social.fb">
-            <Icons icon="fb" classes="h-8 w-auto mr-12" />
+            <Icons icon="fb" classes="h-6 sm:h-8 w-auto mr-12" />
           </a>
           <a :href="global.social.tw" target="_blank" v-if="global.social.tw">
-            <Icons icon="tw" classes="h-8 w-auto mr-12" />
+            <Icons icon="tw" classes="h-6 sm:h-8 w-auto mr-12" />
           </a>
           <a :href="global.social.ig" target="_blank" v-if="global.social.ig">
-            <Icons icon="ig" classes="h-8 w-auto mr-0 sm:mr-12" />
+            <Icons icon="ig" classes="h-6 sm:h-8 w-auto mr-0 sm:mr-12" />
           </a>
         </div>
 
