@@ -214,6 +214,9 @@ export default async () => {
     buildModules: [
       '@nuxt/postcss8',
     ],
+    css: [
+      '@/assets/css/main.css',
+    ],
     storybook: {},
     proxy: {
     },
