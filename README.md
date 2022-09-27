@@ -1,5 +1,7 @@
 # bubec
 
+requires the Backend repo https://github.com/assemblage/bubec-wordpress to be installed in the same root folder as this one to compile TailwindCSS for guttenberg blocks (see tailwind.config.js)
+
 ## Build Setup
 
 ```bash

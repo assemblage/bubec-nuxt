@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-xl lg:text-1xl xl:text-2xl tracking-tight text-center mt-10 sm:mt-20 lg:mt-[30vh] font-bold sm:font-normal">{{ $t('events') }}</h1>
+    <h1 class="text-xl lg:text-1xl xl:text-2xl tracking-tight text-center mt-10 sm:mt-20 lg:mt-40 font-bold">{{ $t('events') }}</h1>
 
     <nav class="max-w-3xl text-sm sm:text-base px-4 sm:px-6 lg:px-8 mx-auto flex flex-wrap justify-center items-center space-x-4 my-10 sm:my-20">
 
@@ -13,7 +13,7 @@
       </NuxtLink>
     </nav>
 
-    <nav class="max-w-3xl text-sm sm:text-base px-4 sm:px-6 lg:px-8 mx-auto flex justify-center items-center space-x-4 mt-10 sm:mt-20 mb-20">
+    <nav class="max-w-3xl text-sm sm:text-base px-4 sm:px-6 lg:px-8 mx-auto flex justify-center items-center space-x-4 mt-10 sm:mt-20 mb-10">
       <button v-for="(item, index) in years" :key="index" :class="[programYear == item ? '' : 'opacity-40 hover:opacity-100 transition']" @click="changeYear(item)">
         {{ item }}
       </button>

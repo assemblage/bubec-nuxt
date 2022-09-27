@@ -1,6 +1,6 @@
 <template>
-  <header class="pb-4 md:pb-8 fixed z-50 top-0 left-0 w-full" :class="[ showMenu ? 'bg-yellow-900 h-screen flex flex-col' : 'bg-gray-900']">
-    <div v-if="newArticles" class="max-w-screen-3xl mx-auto relative text-xs sm:text-sm lg:text-base 2xl:text-lg uppercase flex py-2 sm:py-4 h-10 md:h-16 overflow-x-hidden" :class="[showMenu ? 'hidden lg:flex' : '']">
+  <header class="pb-4 md:pb-8 fixed z-50 top-0 left-0 w-full flex flex-col" :class="[ showMenu ? 'bg-yellow-900 h-screen md:pr-[17px]' : 'bg-gray-900']">
+    <div v-if="newArticles" class="max-w-screen-3xl mx-auto relative text-xs sm:text-sm lg:text-base 2xl:text-lg uppercase flex py-2 sm:py-4 min-h-[2.5rem] md:min-h-[4rem] overflow-x-hidden max-w-full" :class="[showMenu ? 'hidden lg:flex ' : '']">
 
       <span class="z-10 absolute left-0 top-0 h-full w-10 lg:w-20 bg-gradient-to-r" :class="[ showMenu ? 'from-yellow-900' : 'from-gray-900']"></span>
 
@@ -29,13 +29,13 @@
 
     <div class="w-full max-w-screen-3xl mx-auto flex justify-between px-4 sm:px-6 lg:px-10" :class="[ !newArticles ? 'mt-4' : 'pt-3']">
       <NuxtLink :to=" activeLocale == 'en' ? '/en/' : '/'" :class="[showMenu ? 'invisible' : '', 'relative']">
-        <Icons icon="logo" :classes="!scrolled ? 'transition-all h-8 md:h-12 w-auto 2xl:h-20' : 'transition-all opacity-0 h-8 2xl:h-12 w-auto'" />
+        <Icons icon="logo" :classes="!scrolled ? 'h-8 md:h-12 w-auto 2xl:h-20' : 'hidden'" />
 
-        <Icons icon="logo-sm" :classes="!scrolled ? 'absolute opacity-0 h-8 md:h-12 w-auto 2xl:h-20' : 'absolute top-0 left-0 transition-all h-8 2xl:h-12 w-auto'" />
+        <Icons icon="logo-sm" :classes="!scrolled ? 'hidden' : 'absolute top-0 left-0 h-8 2xl:h-12 w-auto'" />
       </NuxtLink>
 
-      <button @click="showMenu = !showMenu" :class="[showMenu ? 'mt-4 lg:mt-0' : '']">
-        <Icons v-if="!showMenu" icon="menu" :classes="!scrolled ? 'transition-all w-auto h-8 md:h-12 2xl:h-20' : 'transition-all w-auto h-8 2xl:h-12'" />
+      <button @click="showMenu = !showMenu" :class="[showMenu ? 'mt-4 lg:mt-0 mr-4 md:mr-0' : '']">
+        <Icons v-if="!showMenu" icon="menu" :classes="!scrolled ? 'w-auto h-8 md:h-12 2xl:h-20' : 'w-auto h-8 2xl:h-12'" />
 
         <Icons v-else icon="close" :classes="!scrolled ? 'w-auto h-8 md:h-12 2xl:h-16' : 'w-auto h-8 2xl:h-14'" />
       </button>
@@ -56,26 +56,32 @@
         </div>
       </nav>
 
-      <div class="flex flex-col md:flex-row md:items-center mt-auto px-6 pb-4 md:p-0">
+      <div class="flex justify-center mt-8">
+        <NuxtLink v-if="activeLocale == 'cs'" :to="'/en/'" class="md:hidden font-bold text-base uppercase my-3 cursor-pointer">English</NuxtLink>
 
-        <div class="flex mb-12 md:mb-0 justify-center md:justify-start">
+        <NuxtLink v-if="activeLocale == 'en'" :to="'/'" class="md:hidden font-bold text-base uppercase my-3 cursor-pointer">Česky</NuxtLink>        
+      </div>
+
+      <div class="flex items-center mt-auto px-4 sm:px-6 pb-4 md:p-0 justify-between md:justify-start">
+
+        <div class="flex justify-center md:justify-start">
           <a :href="global.social.fb" target="_blank" v-if="global.social.fb">
-            <Icons icon="fb" classes="h-6 sm:h-8 w-auto mr-12" />
+            <Icons icon="fb" classes="h-6 sm:h-8 w-auto mr-6 md:mr-12" />
           </a>
           <a :href="global.social.tw" target="_blank" v-if="global.social.tw">
-            <Icons icon="tw" classes="h-6 sm:h-8 w-auto mr-12" />
+            <Icons icon="tw" classes="h-6 sm:h-8 w-auto mr-6 md:mr-12" />
           </a>
           <a :href="global.social.ig" target="_blank" v-if="global.social.ig">
-            <Icons icon="ig" classes="h-6 sm:h-8 w-auto mr-0 sm:mr-12" />
+            <Icons icon="ig" classes="h-6 sm:h-8 w-auto mr-6 md:mr-12" />
           </a>
         </div>
 
-        <div class="flex basis-full">
-          <a href="mailto:info@bubec.cz" class="text-sm md:text-lg lg:text-xl w-full sm:w-auto hover:underline decoration-2">info@bubec.cz</a>
+        <div class="flex md:basis-full">
+          <a href="mailto:info@bubec.cz" class=" hover:underline decoration-2 text-[1.2rem] md:text-[2.4rem] leading-none font-bold md:font-normal">info@bubec.cz</a>
 
-          <NuxtLink v-if="activeLocale == 'cs'" :to="'/en/'" class="ml-auto text-sm md:text-base">English</NuxtLink>
+          <NuxtLink v-if="activeLocale == 'cs'" :to="'/en/'" class="ml-auto text-[2rem] leading-none hidden md:inline">English</NuxtLink>
 
-          <NuxtLink v-if="activeLocale == 'en'" :to="'/'" class="ml-auto text-sm md:text-base">Česky</NuxtLink>
+          <NuxtLink v-if="activeLocale == 'en'" :to="'/'" class="ml-auto text-[2rem] leading-none hidden md:inline">Česky</NuxtLink>
         </div>
       </div>
     </div>

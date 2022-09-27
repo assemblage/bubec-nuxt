@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-center text-xl lg:text-1xl xl:text-2xl tracking-tight mt-20 lg:mt-[30vh]">{{ $t('news') }}</h1>
+    <h1 class="text-center font-bold text-xl lg:text-1xl xl:text-2xl tracking-tight mt-20 lg:mt-40">{{ $t('news') }}</h1>
 
     <nav class="max-w-3xl text-base px-4 sm:px-6 lg:px-8 mx-auto flex justify-center items-center space-x-4 my-20">
       <button v-for="(item, index) in years" :key="index" :class="[selectedYear == item ? '' : 'opacity-40 hover:opacity-100 transition']" @click="selectedYear = item">
