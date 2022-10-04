@@ -52,7 +52,7 @@
 
         <Icons v-else icon="close" :classes="!scrolled ? 'w-auto h-8 md:h-12 2xl:h-16' : 'w-auto h-8 2xl:h-14'" />
       </button>
-    </div> 
+    </div>
 
     <div v-if="showMenu" class="w-full max-w-screen-3xl mx-auto lg:pt-20 lg:pb-10 px-4 sm:px-6 lg:px-10 bg-yellow-900 flex flex-col grow h-screen overflow-y-auto">
       <nav class="flex justify-between lg:space-x-16 flex-col lg:flex-row items-center lg:items-start text-center lg:text-left mb-8 md:mb-0">
@@ -72,7 +72,7 @@
       <div class="flex justify-center mt-8">
         <NuxtLink v-if="activeLocale == 'cs'" :to="'/en/'" class="md:hidden font-bold text-base uppercase my-3 cursor-pointer">English</NuxtLink>
 
-        <NuxtLink v-if="activeLocale == 'en'" :to="'/'" class="md:hidden font-bold text-base uppercase my-3 cursor-pointer">Česky</NuxtLink>        
+        <NuxtLink v-if="activeLocale == 'en'" :to="'/'" class="md:hidden font-bold text-base uppercase my-3 cursor-pointer">Česky</NuxtLink>
       </div>
 
       <div class="flex items-center mt-auto px-4 sm:px-6 pb-4 md:p-0 justify-between md:justify-start">
@@ -80,9 +80,6 @@
         <div class="flex justify-center md:justify-start">
           <a :href="global.social.fb" target="_blank" v-if="global.social.fb">
             <Icons icon="fb" classes="h-6 sm:h-8 w-auto mr-6 md:mr-12" />
-          </a>
-          <a :href="global.social.tw" target="_blank" v-if="global.social.tw">
-            <Icons icon="tw" classes="h-6 sm:h-8 w-auto mr-6 md:mr-12" />
           </a>
           <a :href="global.social.ig" target="_blank" v-if="global.social.ig">
             <Icons icon="ig" classes="h-6 sm:h-8 w-auto mr-6 md:mr-12" />
@@ -176,8 +173,8 @@ export default {
     newArticles() {
       if ( !this.global.featured_posts ) return
 
-      const featured_posts = this.activeLocale == 'en' ? this.global.featured_posts_en : this.global.featured_posts;   
-      
+      const featured_posts = this.activeLocale == 'en' ? this.global.featured_posts_en : this.global.featured_posts;
+
       if ( !featured_posts ) return
 
       const articles =  featured_posts.map( item => {
@@ -208,7 +205,7 @@ export default {
       return this.$i18n.locale;
     },
   },
-  mounted() {  
+  mounted() {
     window.addEventListener('scroll', e => {
       requestAnimationFrame(() => {
         this.scrolled = window.scrollY > 10
@@ -216,7 +213,7 @@ export default {
     })
   },
   watch: {
-    $route () { 
+    $route () {
       this.$nextTick(() => {
         this.showMenu = false;
       });
@@ -228,7 +225,7 @@ export default {
         appContainer.classList.add('locked');
       } else {
         appContainer.classList.remove('locked');
-      }      
+      }
     }
   },
   head () {
