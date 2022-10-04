@@ -6,11 +6,11 @@
 
       <div class="marquee flex items-center leading-none">
 
-        <NuxtLink v-show="showArticles" :to="item.link" v-for="(item, index) in newArticles" :key="index" class="whitespace-nowrap">
+        <NuxtLink :to="item.link" v-for="(item, index) in newArticles" :key="index" class="whitespace-nowrap" :class="showArticles ? '' : 'invisible'">
           {{ item.title }}<span v-if="index !== newArticles.length - 1" class="px-6">&bull;</span>
         </NuxtLink>
 
-        <NuxtLink v-show="showArticles" :to="item.link" v-for="(item, index) in newArticles" :key="index+10" class="whitespace-nowrap">
+        <NuxtLink :to="item.link" v-for="(item, index) in newArticles" :key="index+10" class="whitespace-nowrap" :class="showArticles ? '' : 'invisible'">
           <span class="px-6">&bull;</span>{{ item.title }}
         </NuxtLink>
 
@@ -33,6 +33,19 @@
 
         <Icons icon="logo-sm" :classes="!scrolled ? 'hidden' : 'absolute top-0 left-0 h-8 2xl:h-12 w-auto'" />
       </NuxtLink>
+
+      <nav v-if="sectionsMenu && scrolled" class="space-x-8 flex">
+        <button @click.prevent="handleSubmenu(item.link)" v-for="(item, index) in sectionsMenu" :key="index" class="text-xs uppercase inline-flex items-center">
+          <span class="underline mr-1">{{ item.title }}</span>
+
+          <svg class="h-3 w-auto" :class="[item.link.indexOf('#') !== -1 ? 'rotate-90' : '']" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 64.9 56" enable-background="new 0 0 64.9 56" xml:space="preserve">
+              <g enable-background="new    ">
+                <path d="M36.8,56l-4.2-4.4l20.6-20.4H0v-6.3h53.2L32.6,4.4L36.8,0l28.1,28L36.8,56z"/>
+              </g>
+          </svg>
+        </button>
+      </nav>
 
       <button @click="showMenu = !showMenu" :class="[showMenu ? 'mt-4 lg:mt-0 mr-4 md:mr-0' : '']">
         <Icons v-if="!showMenu" icon="menu" :classes="!scrolled ? 'w-auto h-8 md:h-12 2xl:h-20' : 'w-auto h-8 2xl:h-12'" />
@@ -104,8 +117,36 @@ export default {
       showArticles: true,
       scrolled: false,
       activeSubmenu: null,
+      sectionsMenu: false,
     }
   },
+  async fetch() {
+    const pageSlug = $nuxt.context.route.params.slug;
+    const state = $nuxt.context.nuxtState.state;
+
+    const pages = state.pages.filter( item => item.slug == pageSlug );
+
+    if( pages.length ) {
+      this.sectionsMenu = pages[0].acf.submenu;
+      return;
+    }
+
+    const articles = state.articles.filter( item => item.slug == pageSlug );    
+    
+    if( articles.length ) {
+      this.sectionsMenu = articles[0].acf.submenu;
+      return;
+    }
+
+    const courses = state.courses.filter( item => item.slug == pageSlug );    
+    
+    if( courses.length ) {
+      this.sectionsMenu = courses[0].acf.submenu;
+      return;
+    }
+  },
+  fetchKey: 'submenu',
+  fetchOnServer: false,
   methods: { 
     parseUrl( item ) {
       let url;
@@ -119,6 +160,14 @@ export default {
       }
 
       return url.charAt(url.length - 1) === '/' ? url : `${url}/`;
+    },
+
+    handleSubmenu( link ) {
+      if ( link.indexOf('#') !== -1 ) {
+        document.querySelector( link ).scrollIntoView({ behavior: "smooth", block: 'start' });
+      } else {
+        window.open(link, "_blank");
+      }
     }
   },
   computed: {
