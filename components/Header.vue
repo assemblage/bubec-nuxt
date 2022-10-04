@@ -117,33 +117,6 @@ export default {
       sectionsMenu: false,
     }
   },
-  async fetch() {
-    const pageSlug = $nuxt.context.route.params.slug;
-    const state = $nuxt.context.nuxtState.state;
-
-    const pages = state.pages.filter( item => item.slug == pageSlug );
-
-    if( pages.length ) {
-      this.sectionsMenu = pages[0].acf.submenu;
-      return;
-    }
-
-    const articles = state.articles.filter( item => item.slug == pageSlug );    
-    
-    if( articles.length ) {
-      this.sectionsMenu = articles[0].acf.submenu;
-      return;
-    }
-
-    const courses = state.courses.filter( item => item.slug == pageSlug );    
-    
-    if( courses.length ) {
-      this.sectionsMenu = courses[0].acf.submenu;
-      return;
-    }
-  },
-  fetchKey: 'submenu',
-  fetchOnServer: false,
   methods: { 
     parseUrl( item ) {
       let url;
@@ -159,13 +132,43 @@ export default {
       return url.charAt(url.length - 1) === '/' ? url : `${url}/`;
     },
 
+    loadSubmenu() {
+      if ( typeof $nuxt == 'undefined' ) return;
+
+      const pageSlug = $nuxt.context.route.params.slug;
+      const state = $nuxt.context.nuxtState.state;
+
+      const pages = state.pages.filter( item => item.slug == pageSlug );
+
+      if( pages.length ) {
+        this.sectionsMenu = pages[0].acf.submenu;
+        return;
+      }
+
+      const articles = state.articles.filter( item => item.slug == pageSlug );    
+      
+      if( articles.length ) {
+        this.sectionsMenu = articles[0].acf.submenu;
+        return;
+      }
+
+      const courses = state.courses.filter( item => item.slug == pageSlug );    
+      
+      if( courses.length ) {
+        this.sectionsMenu = courses[0].acf.submenu;
+        return;
+      }
+
+      this.sectionsMenu = false;
+    },
+
     handleSubmenu( link ) {
       if ( link.indexOf('#') !== -1 ) {
         document.querySelector( link ).scrollIntoView({ behavior: "smooth", block: 'start' });
       } else {
         window.open(link, "_blank");
       }
-    }
+    },
   },
   computed: {
     ...mapState(['global']),
@@ -206,6 +209,8 @@ export default {
     },
   },
   mounted() {
+    this.loadSubmenu();
+
     window.addEventListener('scroll', e => {
       requestAnimationFrame(() => {
         this.scrolled = window.scrollY > 10
@@ -216,6 +221,7 @@ export default {
     $route () {
       this.$nextTick(() => {
         this.showMenu = false;
+        this.loadSubmenu();
       });
     },
     showMenu (newVal,oldVal) {

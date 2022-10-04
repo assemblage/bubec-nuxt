@@ -49,7 +49,7 @@ export default {
     },
 
     excerpt() {
-      if( !this.page || !this.page.excerpt ) return this.$t('seo.description');
+      if( !this.page ) return;
 
       return this.page.excerpt.rendered.replace(/<[^>]*>?/gm, '');      
     }
@@ -62,7 +62,7 @@ export default {
     const openGraphMetaArr = getOpenGraphMeta({
       site_name: this.$config.globalTitle,
       title: `${this.title} — ${this.$config.globalTitle}`,
-      description: this.excerpt,
+      description: this.excerpt || this.$t('seo.description'),
       url: this.$config.baseURL.production,
       type: 'website',
       mainImage: `/project-main-image.png`
