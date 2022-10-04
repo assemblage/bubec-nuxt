@@ -46,6 +46,12 @@ export default {
       if( !this.programDetail ) return;
 
       return this.programDetail.content.rendered;      
+    },
+
+    excerpt() {
+      if( !this.programDetail ) return;
+
+      return this.programDetail.excerpt.rendered.replace(/<[^>]*>?/gm, '');      
     }
   },
 
@@ -56,7 +62,7 @@ export default {
     const openGraphMetaArr = getOpenGraphMeta({
       site_name: this.$config.globalTitle,
       title: `${this.title} — ${this.$config.globalTitle}`,
-      description: this.$t('seo.description'),
+      description: this.excerpt,
       url: this.$config.baseURL.production,
       type: 'website',
       mainImage: `/project-main-image.png`
