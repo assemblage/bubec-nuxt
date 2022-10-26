@@ -15,7 +15,7 @@ export default {
   },
   baseURL: {
     production: 'https://bubec.cz',
-    staging: 'https://assemblage-bubec.netlify.app/',
+    staging: 'https://bubec-nuxt.netlify.app/',
     development: 'http://localhost:3000/',
   },
   project: {
