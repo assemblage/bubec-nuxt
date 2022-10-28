@@ -99,6 +99,7 @@ export async function getProgramFactory($config) {
         items = [...items, ...resource.data];
       }
     }
+
     return items;
   } catch (e) {
     console.error(e);

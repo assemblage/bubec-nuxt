@@ -45,6 +45,7 @@ export default {
 
   data() {
     return {
+      testProgram: null,
     }
   },
 
@@ -153,24 +154,24 @@ export default {
 
         const monthName = this.$i18n.locale == 'en' ? date.toLocaleDateString("en-GB", options).toLowerCase() : date.toLocaleDateString("cs-CZ", options);
 
-        if( item.acf.event_end ) {
-          const dateEnd = new Date(item.acf.event_end);
-          const monthNameEnd = this.$i18n.locale == 'en' ? dateEnd.toLocaleDateString("en-GB", options).toLowerCase() : dateEnd.toLocaleDateString("cs-CZ", options);
+        // if( item.acf.event_end ) {
+        //   const dateEnd = new Date(item.acf.event_end);
+        //   const monthNameEnd = this.$i18n.locale == 'en' ? dateEnd.toLocaleDateString("en-GB", options).toLowerCase() : dateEnd.toLocaleDateString("cs-CZ", options);
 
-          let started = false;
+        //   let started = false;
 
-          for (const [monthKey, monthItems] of Object.entries(programByMonths)) {
-            if ( monthKey == monthName ) started = true;
-            if ( monthKey == monthNameEnd ) break;
+        //   for (const [monthKey, monthItems] of Object.entries(programByMonths)) {
+        //     if ( monthKey == monthName ) started = true;
+        //     if ( monthKey == monthNameEnd ) break;
 
-            if( started ) {
-              programByMonths[monthKey].push(item);
-            }
-          }
+        //     if( started ) {
+        //       programByMonths[monthKey].push(item);
+        //     }
+        //   }
 
-        } else {
+        // } else {
           programByMonths[monthName].push(item);
-        }
+        // }
       });
 
       return programByMonths;
