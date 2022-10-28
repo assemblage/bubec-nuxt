@@ -2,7 +2,11 @@
   <div>
     <ProgramFilters :program="program" :programCategories="programCategories" :selectedCategory="selectedCategory" />
 
-    <ProgramList :program="program" :programCategories="programCategories" :selectedCategory="selectedCategory" />
+    <ProgramList
+      :program="program"
+      :programCategories="programCategories"
+      :selectedCategory="selectedCategory"
+    />
   </div>
 </template>
 
@@ -22,7 +26,7 @@ export default {
   data() {
     return {
       selectedCategory: 'all'
-    }    
+    }
   },
 
   async asyncData({app, params, error, payload, store, $axios}) {
@@ -54,8 +58,8 @@ export default {
         await store.dispatch("getProgram");
         await store.dispatch("getProgramCategories");
 
-        let program = store.state.program;  
-        let programCategories = store.state.programCategories; 
+        let program = store.state.program;
+        let programCategories = store.state.programCategories;
 
         program = program.filter( item => {
           if( app.i18n.locale == 'en' ) {
@@ -108,7 +112,7 @@ export default {
     });
 
     return {
-      title: `${this.title} — ${this.$config.globalTitle}`,        
+      title: `${this.title} — ${this.$config.globalTitle}`,
       meta: [
         ...openGraphMetaArr,
       ],
