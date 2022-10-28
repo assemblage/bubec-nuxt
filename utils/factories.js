@@ -77,23 +77,32 @@ export async function getProgramCategoriesFactory($config) {
 }
 
 export async function getProgramFactory($config) {
-  let batchLength = 100;
-  let batchIndex = 1;
+  let totalPages = 1;
   let items = [];
 
-  while (batchLength == 100) {
-    const resource = await axiosInstance.get( `${$config.apiBaseUrl}wp-json/wp/v2/program?page=${batchIndex}&per_page=100&_embed=1&acf_format=standard`, {
-      method: 'GET'
-    }
+  try {
+    let resource = await axiosInstance.get(
+      `${$config.apiBaseUrl}wp-json/wp/v2/program?page=1&per_page=100&_embed=1&acf_format=standard`, {
+        method: 'GET'
+      }
     );
-
-    batchLength = resource.data.length;
-    batchIndex++;
-
+    totalPages = resource.headers['x-wp-totalpages'];
     items = [...items, ...resource.data];
-  }
 
-  return items;
+    if (totalPages > 1) {
+      for (const i = 0; i < totalPages; i++) {
+        resource = await axiosInstance.get(
+          `${$config.apiBaseUrl}wp-json/wp/v2/program?page=${i + 2}&per_page=100&_embed=1&acf_format=standard`, {
+            method: 'GET'
+          }
+        );
+        items = [...items, ...resource.data];
+      }
+    }
+    return items;
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 export async function getCoursesFactory($config) {
