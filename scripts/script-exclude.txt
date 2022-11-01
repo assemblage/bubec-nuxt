@@ -1,0 +1,68 @@
+# ignore OS generated files
+ehthumbs.db
+Thumbs.db
+.DS_Store
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# ignore compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# ignore development files
+.editorconfig
+.eslintignore
+.eslintrc
+.gitignore
+.prettierrc
+gulpfile.js
+jsconfig.json
+.vscode
+.git
+package-lock.json
+package.json
+
+
+# ignore build & deployment files
+*.sh
+./scripts
+ssh.txt
+ssh.json
+
+# ignore composer
+vendor
+
+# ignore node packages
+node_modules
+**/node_modules
+
+# ignore bower packages
+bower_components
+
+# ignore bootstrap
+bootstrap
+
+# ignore core wordpress folders
+www/wordpress/
+www/wp-content/plugins/*
+www/wp-content/mu-plugins/*
+
+# ignore build things in the "wp-content" directory
+**/node_modules/
