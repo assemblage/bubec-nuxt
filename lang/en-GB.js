@@ -8,10 +8,10 @@ export default {
   imageAlternativeTexts: {
 
   },
-  'Bubec' : 'Bubec',
+  'Bubec': 'Bubec',
+  'Program' : 'Events',
   'Výstavy' : 'Expositions',
   'Creative' : 'Creative',
-  'Program' : 'Events',
   'Zahrada' : 'Garden',
   news : 'News',
   events : 'Events',
