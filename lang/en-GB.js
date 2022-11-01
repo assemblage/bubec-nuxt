@@ -19,7 +19,7 @@ export default {
   noEvents: 'We have not found any events within selected parameters&hellip;',
   seo: {
     title: 'Studio Bubec',
-    description: 'Multifunkční umělecké studio a komunitní centrum',
+    description: 'Founded in 2000, Studio Bubec provides a perfect opportunity for artists to work in a unique environment',
   },
   cookiePolicy: {
     message: 'We use cookies.',
@@ -27,4 +27,3 @@ export default {
   },
 
 };
-
