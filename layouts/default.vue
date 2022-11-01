@@ -28,7 +28,7 @@ export default {
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer', googleTagManagerID);
-      
+
     }
   },
   head () {
@@ -42,13 +42,39 @@ export default {
 
     });
 
+    const openGraphMetaArr = getOpenGraphMeta({
+      site_name: this.$config.globalTitle,
+      title: this.$t('seo.title'),
+      description: this.$t('seo.description'),
+      url: this.$config.baseURL.production,
+      type: 'website',
+      mainImage: '/favicons/android-chrome-192x192.png'
+    });
+
     return {
       htmlAttrs: {
         ...i18nHead.htmlAttrs
       },
+      title: this.$t('seo.title'),
       meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.$t('seo.description'),
+        },
         ...i18nHead.meta,
+        ...openGraphMetaArr,
       ],
+    //   link: [
+
+    //     {
+    //       rel:"preload",
+    //       hid:"preload",
+    //       as: 'image',
+    //       href: this.$img('/images/nimbee-header-large.jpg', {quality: 80, format: 'webp'})
+    //     },
+    //     ...i18nHead.link
+    //  ]
     }
   }
 }

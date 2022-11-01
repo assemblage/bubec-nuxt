@@ -18,8 +18,8 @@ export default {
   all: 'Vše',
   noEvents: 'Pro zvolené parametry jsme nenašli žádný program&hellip;',
   seo: {
-    title: 'bubec',
-    description: 'test',
+    title: 'Studio Bubec',
+    description: 'Multifunkční umělecké studio a komunitní centrum',
   },
   cookiePolicy: {
     message: 'Na této stránce používáme cookies pro poskytnutí požadovaných služeb a k přizpůsobení obsahu vašim zájmům. Plné znění naleznete v našich <a href="/obchodni-podminky">podmínkách</a> užití.',
