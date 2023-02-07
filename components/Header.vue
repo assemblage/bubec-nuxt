@@ -5,15 +5,12 @@
       <span class="z-10 absolute left-0 top-0 h-full w-10 lg:w-20 bg-gradient-to-r" :class="[ showMenu ? 'from-yellow-900' : 'from-gray-900']"></span>
 
       <div class="marquee flex items-center leading-none">
-
-        <NuxtLink :to="item.link" v-for="(item, index) in newArticles" :key="index" class="whitespace-nowrap" :class="showArticles ? '' : 'invisible'">
-          {{ item.title }}<span v-if="index !== newArticles.length - 1" class="px-6">&bull;</span>
-        </NuxtLink>
-
-        <NuxtLink :to="item.link" v-for="(item, index) in newArticles" :key="index+10" class="whitespace-nowrap" :class="showArticles ? '' : 'invisible'">
-          <span class="px-6">&bull;</span>{{ item.title }}
-        </NuxtLink>
-
+        <articles-marquee :articles="newArticles" :showArticles="showArticles"></articles-marquee>
+        <articles-marquee :articles="newArticles" :showArticles="showArticles"></articles-marquee>
+        <articles-marquee :articles="newArticles" :showArticles="showArticles"></articles-marquee>
+        <articles-marquee :articles="newArticles" :showArticles="showArticles"></articles-marquee>
+        <articles-marquee :articles="newArticles" :showArticles="showArticles"></articles-marquee>
+        <articles-marquee :articles="newArticles" :showArticles="showArticles"></articles-marquee>
       </div>
 
       <button @click="showArticles = !showArticles" class="absolute top-0 right-0 flex h-full">
@@ -34,11 +31,11 @@
         <Icons icon="logo-sm" :classes="!scrolled ? 'hidden' : 'absolute top-0 left-0 h-8 2xl:h-12 w-auto'" />
       </NuxtLink>
 
-      <nav v-if="sectionsMenu && scrolled" class="space-x-8 flex">
-        <button @click.prevent="handleSubmenu(item.link)" v-for="(item, index) in sectionsMenu" :key="index" class="text-xs uppercase inline-flex items-center">
-          <span class="underline mr-1">{{ item.title }}</span>
+      <nav v-if="sectionsMenu && scrolled" class="space-x-3 md:space-x-8 flex relative z-20">
+        <button @click.prevent="handleSubmenu(item.link)" v-for="(item, index) in sectionsMenu" :key="index" class="text-xxs md:text-xs uppercase inline-flex items-center">
+          <span class="underline mr-0.5 md:mr-1">{{ item.title }}</span>
 
-          <svg class="h-3 w-auto" :class="[item.link.indexOf('#') !== -1 ? 'rotate-90' : '']" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          <svg class="h-2 md:h-3 w-auto" :class="[item.link.indexOf('#') !== -1 ? 'rotate-90' : '']" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewBox="0 0 64.9 56" enable-background="new 0 0 64.9 56" xml:space="preserve">
               <g enable-background="new    ">
                 <path d="M36.8,56l-4.2-4.4l20.6-20.4H0v-6.3h53.2L32.6,4.4L36.8,0l28.1,28L36.8,56z"/>
@@ -54,13 +51,14 @@
       </button>
     </div>
 
-    <div v-if="showMenu" class="w-full max-w-screen-3xl mx-auto lg:pt-20 lg:pb-10 px-4 sm:px-6 lg:px-10 bg-yellow-900 flex flex-col grow h-screen overflow-y-auto">
-      <nav class="flex justify-between lg:space-x-16 flex-col lg:flex-row items-center lg:items-start text-center lg:text-left mb-8 md:mb-0">
+    <div v-if="showMenu" class="w-full max-w-screen-3xl mx-auto lg:pt-14 lg:pb-6 px-4 sm:px-6 lg:px-10 bg-yellow-900 flex flex-col grow h-screen overflow-y-auto">
+      
+      <nav class="flex justify-between lg:space-x-16 flex-col lg:flex-row items-center lg:items-start text-center lg:text-left">
         <div v-for="(item, index) in global.menus[activeLocale]" :key="index">
-          <h3 class="font-bold text-base sm:text-lg 2xl:text-xl uppercase my-3 sm:my-5 lg:mt-0 lg:mb-20 cursor-pointer lg:cursor-default" @click=" activeSubmenu = activeSubmenu == index ? null : index">{{ $t(index) }}</h3>
+          <h3 class="font-bold text-base sm:text-lg 2xl:text-xl uppercase my-2 sm:my-5 lg:mt-0 lg:mb-10 cursor-pointer lg:cursor-default" @click=" activeSubmenu = activeSubmenu == index ? null : index">{{ $t(index) }}</h3>
 
           <div :class="[ activeSubmenu == index ? '' : 'overflow-hidden max-h-0 lg:overflow-visible lg:max-h-auto' ]">
-            <span v-for="(item, index) in item" :key="index" class="lowercase block text-sm lg:text-base mb-3 lg:mb-4" @click="showMenu = false">
+            <span v-for="(item, index) in item" :key="index" class="lowercase block text-sm lg:text-base mb-2 lg:mb-4" @click="showMenu = false">
               <NuxtLink :to="parseUrl(item)" class="hover:underline decoration-2">
                 {{ item.title }}
               </NuxtLink>
@@ -69,7 +67,7 @@
         </div>
       </nav>
 
-      <div class="flex justify-center mt-8">
+      <div class="flex justify-center mt-6">
         <NuxtLink v-if="activeLocale == 'cs'" :to="'/en/'" class="md:hidden font-bold text-base uppercase my-3 cursor-pointer">English</NuxtLink>
 
         <NuxtLink v-if="activeLocale == 'en'" :to="'/'" class="md:hidden font-bold text-base uppercase my-3 cursor-pointer">Česky</NuxtLink>
@@ -102,10 +100,12 @@
 <script>
 import { mapState } from 'vuex';
 import Icons from './Icons.vue';
+import articlesMarquee from './articlesMarquee.vue';
 
 export default {
   components: {
-    Icons
+    Icons,
+    articlesMarquee
   },
   props: [],
   data() {
@@ -129,7 +129,17 @@ export default {
         url = item.url.charAt(0) === '/' ? item.url : `/${item.url}`;
       }
 
-      return url.charAt(url.length - 1) === '/' ? url : `${url}/`;
+      if( url.indexOf('#') !== -1 ) {
+        url = url.split('#');
+        return {
+          path: url[0].charAt(url[0].length - 1) === '/' ? url[0] : `${url[0]}/`,
+          hash: '#'+url[1]
+        };
+      } else {
+        return {
+          path: url.charAt(url.length - 1) === '/' ? url : `${url}/`
+        };
+      }
     },
 
     loadSubmenu() {

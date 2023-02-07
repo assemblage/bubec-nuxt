@@ -7,6 +7,9 @@ module.exports = {
     "./plugins/**/*.{js,ts}",
     "./nuxt.config.{js,ts}"
   ],
+  safelist: [
+    'xl:!text-2xl','sm:!text-1xl', '!text-xl', '!block'
+  ],
   theme: {
     fontFamily: {
       sans: ['Akkurat Pro', 'sans-serif'],
@@ -29,6 +32,7 @@ module.exports = {
       black: { 900: '#000000' },
       red: { 900: '#ff0000' },
       green: { 900: '#00ee00' },
+      white: { 900: '#ffffff' }
     },
     screens: {
       'sm': '640px',

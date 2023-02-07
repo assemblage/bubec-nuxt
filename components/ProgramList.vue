@@ -12,7 +12,7 @@
           <NuxtLink
             v-for="(item, index) in sortProgram(program)" :key="index"
             :to="getLink(item)"
-            class="program-thumb has-white-background-color has-black-border-color border py-6 px-4 flex flex-col text-center min-w-[18rem] min-h-[18rem] 2xl:basis-auto md:min-w-[20rem] md:min-h-[20rem] 2xl:min-h-[22rem] 2xl:min-w-[22rem] 3xl:min-h-[26rem] 3xl:w-[26rem]"
+            class="program-thumb has-white-background-color has-black-border-color border py-6 px-4 flex flex-col text-center w-[18rem] min-h-[18rem] 2xl:basis-auto md:w-[20rem] md:min-h-[20rem] 2xl:min-h-[22rem] 2xl:w-[22rem] 3xl:min-h-[26rem] 3xl:w-[26rem]"
           >
             <h3 class="text-xs md:text-sm lg:text-base font-bold basis-12" v-html="item.title.rendered.replace('–','<br>')"></h3>
 
