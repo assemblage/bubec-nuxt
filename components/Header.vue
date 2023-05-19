@@ -1,5 +1,5 @@
 <template>
-  <header class="pb-4 md:pb-8 fixed z-50 top-0 left-0 w-full flex flex-col" :class="[ showMenu ? 'bg-yellow-900 h-screen md:pr-[17px]' : 'bg-gray-900']">
+  <header class="pb-4 md:pb-8 fixed z-50 top-0 left-0 w-full flex flex-col" :class="[ showMenu ? 'bg-yellow-900 h-screen' : 'bg-gray-900']">
     <div v-if="newArticles" class="max-w-screen-3xl mx-auto relative text-xs sm:text-sm lg:text-base 2xl:text-lg uppercase flex py-2 sm:py-4 min-h-[2.5rem] md:min-h-[4rem] overflow-x-hidden max-w-full" :class="[showMenu ? 'hidden lg:flex ' : '']">
 
       <span class="z-10 absolute left-0 top-0 h-full w-10 lg:w-20 bg-gradient-to-r" :class="[ showMenu ? 'from-yellow-900' : 'from-gray-900']"></span>
@@ -52,7 +52,7 @@
     </div>
 
     <div v-if="showMenu" class="w-full max-w-screen-3xl mx-auto lg:pt-14 lg:pb-6 px-4 sm:px-6 lg:px-10 bg-yellow-900 flex flex-col grow h-screen overflow-y-auto">
-      
+
       <nav class="flex justify-between lg:space-x-16 flex-col lg:flex-row items-center lg:items-start text-center lg:text-left">
         <div v-for="(item, index) in global.menus[activeLocale]" :key="index">
           <h3 class="font-bold text-base sm:text-lg 2xl:text-xl uppercase my-2 sm:my-5 lg:mt-0 lg:mb-10 cursor-pointer lg:cursor-default" @click=" activeSubmenu = activeSubmenu == index ? null : index">{{ $t(index) }}</h3>
@@ -117,7 +117,7 @@ export default {
       sectionsMenu: false,
     }
   },
-  methods: { 
+  methods: {
     parseUrl( item ) {
       let url;
       if( item.url.indexOf(this.$config.apiBaseUrl) !== -1 ) {
@@ -155,15 +155,15 @@ export default {
         return;
       }
 
-      const articles = state.articles.filter( item => item.slug == pageSlug );    
-      
+      const articles = state.articles.filter( item => item.slug == pageSlug );
+
       if( articles.length ) {
         this.sectionsMenu = articles[0].acf.submenu;
         return;
       }
 
-      const courses = state.courses.filter( item => item.slug == pageSlug );    
-      
+      const courses = state.courses.filter( item => item.slug == pageSlug );
+
       if( courses.length ) {
         this.sectionsMenu = courses[0].acf.submenu;
         return;
