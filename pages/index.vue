@@ -37,7 +37,7 @@ export default {
         return item.link == url;
       })
 
-      return homepage[0].excerpt.rendered.replace(/<[^>]*>?/gm, '');      
+      return homepage[0].excerpt.rendered.replace(/<[^>]*>?/gm, '');
     }
 
   },
@@ -54,7 +54,7 @@ export default {
     });
 
     return {
-      title: `${this.title} — ${this.$config.globalTitle}`,        
+      title: `${this.title} — ${this.$config.globalTitle}`,
       meta: [
         ...openGraphMetaArr,
       ],
@@ -62,3 +62,19 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+.homepage-title
+  height: calc(100vh - 188px)
+  max-height: 1000px
+  display: flex
+  align-items: flex-start
+  justify-content: flex-end
+  text-align: left
+  flex-direction: column
+  & > br
+    display: none
+  & *
+    font-size: clamp(80px, 11vw, 170px)
+    line-height: .95
+</style>
