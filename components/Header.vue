@@ -1,5 +1,5 @@
 <template>
-  <header class="pb-4 md:pb-8 fixed z-50 top-0 left-0 w-full flex flex-col" :class="[ showMenu ? 'bg-yellow-900 h-screen' : 'bg-gray-900']">
+  <header ref="mainHeader" class="pb-4 md:pb-8 fixed z-50 top-0 left-0 w-full flex flex-col" :class="[ showMenu ? 'bg-yellow-900 h-screen' : 'bg-gray-900']">
     <div v-if="newArticles" class="max-w-screen-3xl mx-auto relative text-xs sm:text-sm lg:text-base 2xl:text-lg uppercase flex py-2 sm:py-4 min-h-[2.5rem] md:min-h-[4rem] overflow-x-hidden max-w-full" :class="[showMenu ? 'hidden lg:flex ' : '']">
 
       <span class="z-10 absolute left-0 top-0 h-full w-10 lg:w-20 bg-gradient-to-r" :class="[ showMenu ? 'from-yellow-900' : 'from-gray-900']"></span>
@@ -47,7 +47,7 @@
       <button @click="showMenu = !showMenu" :class="[showMenu ? 'mt-4 lg:mt-0 mr-4 md:mr-0' : '']">
         <Icons v-if="!showMenu" icon="menu" :classes="!scrolled ? 'w-auto h-8 md:h-12 2xl:h-20' : 'w-auto h-8 2xl:h-12'" />
 
-        <Icons v-else icon="close" :classes="!scrolled ? 'w-auto h-8 md:h-12 2xl:h-16' : 'w-auto h-8 2xl:h-14'" />
+        <Icons v-else icon="close" :classes="!scrolled ? 'w-auto h-8 md:h-12 2xl:h-20' : 'w-auto h-8 2xl:h-14'" />
       </button>
     </div>
 
@@ -117,7 +117,16 @@ export default {
       sectionsMenu: false,
     }
   },
+  mounted() {
+    wiindow.addEventListener("resize", this.myEventHandler);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.myEventHandler);
+  },
   methods: {
+    myEventHandler(e) {
+
+    },
     showArticlesHandler() {
       this.showArticles = !this.showArticles;
     },
@@ -177,7 +186,14 @@ export default {
 
     handleSubmenu( link ) {
       if ( link.indexOf('#') !== -1 ) {
-        document.querySelector( link ).scrollIntoView({ behavior: "smooth", block: 'start' });
+        // document.querySelector(link).scrollIntoView({ behavior: "smooth", block: 'start' });
+
+        const mainHeader = this.$refs.mainHeader;
+        const element = document.querySelector(link);
+        const y = (element.getBoundingClientRect().top + window.pageYOffset) - mainHeader.getBoundingClientRect().height;
+
+        window.scrollTo({top: y, behavior: 'smooth'});
+
       } else {
         window.open(link, "_blank");
       }
@@ -257,4 +273,7 @@ export default {
     & > svg > path
       fill: red
 </style>
+
+
+
 
