@@ -7,8 +7,9 @@
       :class="showArticles ? '' : 'invisible'"
       class="inline-flex items-center"
     >
-      {{ item.title }}<span v-if="index !== articles.length - 1" class="px-6">
-      <Icons icon="arr" classes="h-4 md:h-5 w-auto"/>
+      {{ item.title }}
+      <span class="px-6">
+        <Icons icon="arr" classes="h-4 md:h-5 w-auto"/>
       </span>
     </NuxtLink>
   </div>

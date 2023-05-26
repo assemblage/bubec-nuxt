@@ -17,7 +17,7 @@
         <span class="h-full w-20 bg-gradient-to-l" :class="[ showMenu ? 'from-yellow-900' : 'from-gray-900']"></span>
 
         <span class="h-full inline-flex items-center lg:px-2" :class="[ showMenu ? 'bg-yellow-900' : 'bg-gray-900']">
-          <Icons icon="star" classes="h-5 md:h-6 2xl:h-8 w-auto" />
+          <Icons icon="star" classes="h-5 md:h-6 2xl:h-8 w-auto" :class="showArticles ? '' : 'articles-toggle--active'" />
         </span>
 
         <span class="h-full w-4 sm:w-6 lg:w-8" :class="[ showMenu ? 'bg-yellow-900' : 'bg-gray-900']"></span>
@@ -252,4 +252,9 @@ export default {
   }
 }
 </script>
+<style lang="sass">
+  .articles-toggle--active
+    & > svg > path
+      fill: red
+</style>
 
