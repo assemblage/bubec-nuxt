@@ -13,7 +13,7 @@
         <articles-marquee :articles="newArticles" :showArticles="showArticles"></articles-marquee>
       </div>
 
-      <button @click="showArticles = !showArticles" class="absolute top-0 right-0 flex h-full">
+      <button @click="showArticlesHandler" class="absolute top-0 right-0 flex h-full">
         <span class="h-full w-20 bg-gradient-to-l" :class="[ showMenu ? 'from-yellow-900' : 'from-gray-900']"></span>
 
         <span class="h-full inline-flex items-center lg:px-2" :class="[ showMenu ? 'bg-yellow-900' : 'bg-gray-900']">
@@ -118,6 +118,9 @@ export default {
     }
   },
   methods: {
+    showArticlesHandler() {
+      this.showArticles = !this.showArticles;
+    },
     parseUrl( item ) {
       let url;
       if( item.url.indexOf(this.$config.apiBaseUrl) !== -1 ) {
