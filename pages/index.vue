@@ -65,8 +65,6 @@ export default {
 
 <style lang="sass">
 .homepage-title
-  height: calc(100vh - 188px)
-  max-height: 1000px
   display: flex
   align-items: flex-start
   justify-content: flex-end

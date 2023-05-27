@@ -1,5 +1,5 @@
 <template>
-  <header ref="mainHeader" class="pb-4 md:pb-8 fixed z-50 top-0 left-0 w-full flex flex-col" :class="[ showMenu ? 'bg-yellow-900 h-screen' : 'bg-gray-900']">
+  <header ref="mainHeader" class="main-header pb-4 md:pb-8 fixed z-50 top-0 left-0 w-full flex flex-col" :class="[ showMenu ? 'bg-yellow-900 h-screen' : 'bg-gray-900']">
     <div v-if="newArticles" class="max-w-screen-3xl mx-auto relative text-xs sm:text-sm lg:text-base 2xl:text-lg uppercase flex py-2 sm:py-4 min-h-[2.5rem] md:min-h-[4rem] overflow-x-hidden max-w-full" :class="[showMenu ? 'hidden lg:flex ' : '']">
 
       <span class="z-10 absolute left-0 top-0 h-full w-10 lg:w-20 bg-gradient-to-r" :class="[ showMenu ? 'from-yellow-900' : 'from-gray-900']"></span>
@@ -117,15 +117,26 @@ export default {
       sectionsMenu: false,
     }
   },
-  mounted() {
-    wiindow.addEventListener("resize", this.myEventHandler);
+  created() {
+
+    if(!process.server){
+      this.mainTitleSectionYSizeHandler();
+      window.addEventListener("resize", this.mainTitleSectionYSizeHandler);
+    }
+
   },
   destroyed() {
-    window.removeEventListener("resize", this.myEventHandler);
+    window.removeEventListener("resize", this.mainTitleSectionYSizeHandler);
   },
   methods: {
-    myEventHandler(e) {
-
+    mainTitleSectionYSizeHandler(e) {
+      setTimeout(() => {
+        const mainHeader = document.querySelector('.main-header');
+        const $el = document.querySelector('.homepage-title-section');
+        const mainElement = $el.parentElement.parentElement;
+        mainElement.style.paddingTop = `${mainHeader.getBoundingClientRect().height}px`;
+        $el.style.height = `calc(100vh - ${mainHeader.getBoundingClientRect().height}px)`;
+      }, 0);
     },
     showArticlesHandler() {
       this.showArticles = !this.showArticles;
@@ -269,6 +280,10 @@ export default {
 }
 </script>
 <style lang="sass">
+  .homepage-title-section
+    & h1,
+    & div
+      height: 100%
   .articles-toggle--active
     & > svg > path
       fill: red
