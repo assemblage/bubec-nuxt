@@ -121,21 +121,41 @@ export default {
 
     if(!process.server){
       this.mainTitleSectionYSizeHandler();
-      window.addEventListener("resize", this.mainTitleSectionYSizeHandler);
+      window.addEventListener("resize", this.resizeHandlers);
     }
 
   },
   destroyed() {
-    window.removeEventListener("resize", this.mainTitleSectionYSizeHandler);
+    window.removeEventListener("resize", this.resizeHandlers);
   },
   methods: {
+
+    resizeHandlers() {
+      this.mainTitleSectionYSizeHandler();
+      this.setMenuWindow100Height();
+    },
+
+    setMenuWindow100Height() {
+      // due to mobile issues with 100vh, we have to calculate the inner height of the viewport
+      const mainHeader = document.querySelector('.main-header');
+      const documentInnerHeight = window.innerHeight;
+
+      if (this.showMenu) {
+        mainHeader.style.height = `calc(${documentInnerHeight}px)`;
+      } else {
+        mainHeader.style.height = `auto`;
+      }
+    },
+
     mainTitleSectionYSizeHandler(e) {
+      if (this.showMenu) return false;
       setTimeout(() => {
         const mainHeader = document.querySelector('.main-header');
         const $el = document.querySelector('.homepage-title-section');
         const mainElement = $el.parentElement.parentElement;
+        const documentInnerHeight = window.innerHeight;
         mainElement.style.paddingTop = `${mainHeader.getBoundingClientRect().height}px`;
-        $el.style.height = `calc(100vh - ${mainHeader.getBoundingClientRect().height}px)`;
+        $el.style.height = `calc(${documentInnerHeight}px - ${mainHeader.getBoundingClientRect().height}px)`;
       }, 0);
     },
     showArticlesHandler() {
@@ -272,6 +292,7 @@ export default {
       } else {
         appContainer.classList.remove('locked');
       }
+      this.setMenuWindow100Height();
     }
   },
   head () {

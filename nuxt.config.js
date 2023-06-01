@@ -92,8 +92,8 @@ const getRoutes = async () => {
   });
 
   // Courses
-  const coursesRes = await getCoursesFactory(projectConfig);   
-  
+  const coursesRes = await getCoursesFactory(projectConfig);
+
   const coursesRoutes = coursesRes.map(item => {
 
     if( item.link.indexOf('/en/') !== -1 ) {
@@ -121,7 +121,7 @@ const getRoutes = async () => {
     ...programRoutes,
     ...programCategoriesRoutes,
     ...coursesRoutes,
-    { route: '/aktuality', payload: { 
+    { route: '/aktuality', payload: {
       articles: articlesRes
     }},
     { route: '/program', payload: {
@@ -134,7 +134,7 @@ const getRoutes = async () => {
 }
 
 const getAssets = async () => {
-  const menusRes = await getMenusFactory(projectConfig); 
+  const menusRes = await getMenusFactory(projectConfig);
 
   return menusRes.data.assets;
 };
@@ -213,7 +213,14 @@ export default async () => {
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
     buildModules: [
       '@nuxt/postcss8',
+      '@nuxtjs/style-resources',
     ],
+    styleResources: {
+      // your settings here
+      sass: [],
+      scss: ['~assets/scss/_variables.scss'],
+      hoistUseStatements: true  // Hoists the "@use" imports. Applies only to "sass", "scss" and "less". Default: false.
+    },
     css: [
       '@/assets/css/main.css',
     ],

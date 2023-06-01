@@ -63,16 +63,31 @@ export default {
 }
 </script>
 
-<style lang="sass">
-.homepage-title
-  display: flex
-  align-items: flex-start
-  justify-content: flex-end
-  text-align: left
-  flex-direction: column
-  & > br
-    display: none
-  & *
-    font-size: clamp(80px, 11vw, 170px)
-    line-height: .95
+<style lang="scss">
+@import '~/assets/scss/variables';
+
+
+.homepage-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  text-align: left;
+  flex-direction: column;
+  & > br {
+    display: none;
+  }
+
+  & * {
+    font-size: clamp(50px, 15vw, 80px);
+    line-height: .95;
+
+    @include media-up(lg) {
+      font-size: clamp(80px, 11vw, 170px)
+    }
+  }
+
+}
+
+
+
 </style>
