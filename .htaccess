@@ -1,0 +1,21 @@
+# BEGIN
+
+# Redirect non-existing pages to old.bubec.cz domain
+Options +SymLinksIfOwnerMatch
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^inpage/(.*)$ https://old.bubec.cz/$0 [R=301,L]
+RewriteRule ^kontaktovat/(.*)$ https://old.bubec.cz/$0 [R=301,L]
+RewriteRule ^foto/(.*)$ https://old.bubec.cz/$0 [R=301,L]
+RewriteRule ^rubrika/(.*)$ https://old.bubec.cz/$0 [R=301,L]
+
+
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+
+# END
