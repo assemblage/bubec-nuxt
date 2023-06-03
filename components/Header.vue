@@ -278,10 +278,15 @@ export default {
     })
   },
   watch: {
-    $route () {
+    $route(to, from) {
       this.$nextTick(() => {
         this.showMenu = false;
         this.loadSubmenu();
+        if (to.path === '/') {
+          setTimeout(() => {
+            this.mainTitleSectionYSizeHandler();
+          }, 100);
+        }
       });
     },
     showMenu (newVal,oldVal) {

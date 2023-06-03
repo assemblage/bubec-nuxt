@@ -20,7 +20,7 @@
 
 @font-face {
   font-family: "Akkurat Pro";
-  src: url("../fonts/AkkuratPro-Bold.otf") format("open type"), 
+  src: url("../fonts/AkkuratPro-Bold.otf") format("open type"),
   url("../fonts/akkuratpro-bold-webfont.woff2") format("woff2"),
   url("../fonts/akkuratpro-bold-webfont.woff") format("woff");
   font-weight: 700;
@@ -39,24 +39,28 @@
   background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(230,230,230,1) 25%, rgba(230,230,230,1) 100%);
 }
 
+.program-thumb {
+  border-color: rgba(0, 0, 0, .2);
+}
+
 .wp-block-columns {
   gap: 5rem;
   margin-bottom: 1rem;
 }
 
-@media screen and (max-width: 1536px) { 
+@media screen and (max-width: 1536px) {
   .wp-block-columns {
     gap: 3rem;
   }
 }
 
-@media screen and (max-width: 1280px) { 
+@media screen and (max-width: 1280px) {
   .wp-block-columns {
     gap: 2rem;
   }
 }
 
-@media screen and (max-width: 560px) { 
+@media screen and (max-width: 560px) {
   .wp-block-columns {
     gap: 1rem;
     margin-bottom: 0;
@@ -104,19 +108,19 @@
 @media screen and (max-width: 780px) {
   .wp-block-spacer.is-style-medium {
     height: 2rem !important;
-  }  
+  }
   .wp-block-spacer.is-style-intro-medium {
     height: .5rem !important;
   }
   .wp-block-spacer.is-style-large {
     height: 4rem !important;
-  }  
+  }
   .wp-block-spacer.is-style-x-large:not(.keep-size) {
     height: 4rem !important;
   }
   .wp-block-spacer.is-style-x-large.keep-size {
    height: 18rem !important;
-  }  
+  }
   .wp-block-columns + .wp-block-columns {
     margin-top: 1rem;
   }
@@ -140,7 +144,7 @@
   overflow-y: hidden;
 }
 
-.marquee {  
+.marquee {
   will-change: transform;
   animation: marquee 100s linear infinite;
 }

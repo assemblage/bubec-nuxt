@@ -1,6 +1,10 @@
 <template>
   <div>
-    <ProgramFilters :program="program" :programCategories="programCategories" :selectedCategory="selectedCategory" />
+    <ProgramFilters
+      :program="program"
+      :programCategories="programCategories"
+      :selectedCategory="selectedCategory"
+    />
 
     <ProgramList
       :program="program"
