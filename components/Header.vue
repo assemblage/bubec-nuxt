@@ -136,6 +136,7 @@ export default {
     },
 
     setMenuWindow100Height() {
+      if (process.server) return false;
       // due to mobile issues with 100vh, we have to calculate the inner height of the viewport
       const mainHeader = document.querySelector('.main-header');
       const documentInnerHeight = window.innerHeight;
@@ -148,6 +149,7 @@ export default {
     },
 
     mainTitleSectionYSizeHandler(e) {
+      if (process.server) return false;
       if (this.showMenu) return false;
       setTimeout(() => {
         const mainHeader = document.querySelector('.main-header');
@@ -289,7 +291,8 @@ export default {
         }
       });
     },
-    showMenu (newVal,oldVal) {
+    showMenu(newVal, oldVal) {
+      if (process.server) return false;
       const appContainer = document.querySelector('.app-container');
 
       if( newVal === true ) {
