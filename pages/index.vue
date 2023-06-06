@@ -26,7 +26,7 @@ export default {
         return item.link == url;
       })
 
-      return homepage[0].content.rendered;
+      return homepage[0]?.content?.rendered;
     },
 
     excerpt() {
@@ -37,7 +37,7 @@ export default {
         return item.link == url;
       })
 
-      return homepage[0].excerpt.rendered.replace(/<[^>]*>?/gm, '');
+      return homepage[0]?.excerpt?.rendered.replace(/<[^>]*>?/gm, '');
     }
 
   },
