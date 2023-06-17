@@ -3,9 +3,12 @@
 
     <div class="footer-logos py-4 md:py-2 px-4 sm:px-6 lg:px-10">
 
-      <a href="#"><img src="~assets/images/eu-logo.png" alt="" /></a>
-      <a href="#"><img src="~assets/images/npo.png" alt="" /></a>
-      <a href="#"><img src="~assets/images/nupz.jpeg" alt="" /></a>
+      <a href="#"><img src="~assets/images/eu-logo.png" alt="Logo projektu Evropské unie" /></a>
+      <a href="#"><img src="~assets/images/praha.png" alt="Logo Hlavního města Prahy" /></a>
+      <a href="#"><img src="~assets/images/mk.jpg" alt="Logo ministerstva kultury" /></a>
+      <a href="#"><img src="~assets/images/npo.png" alt="Logo Národního plánu obnovy" /></a>
+      <a href="#"><img src="~assets/images/nupz.jpeg" alt="Logo Nadaxe umění pro zdraví" /></a>
+      <a href="#"><img src="~assets/images/sfk.png" alt="Logo Státního fondu kultury" /></a>
 
     </div>
 
