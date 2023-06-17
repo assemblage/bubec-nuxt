@@ -7,20 +7,22 @@
       <div v-show="program.length > 0">
         <h2 class="text-center text-xl lg:text-1xl xl:text-2xl tracking-tight capitalize font-bold">{{ monthName }}</h2>
 
-        <div class="px-4 sm:px-6 lg:px-8 gap-8 flex flex-wrap justify-center lg:justify-start my-10 sm:my-20">
+        <div class="program-grid-container px-4 sm:px-6 lg:px-8 gap-8 my-10 sm:my-20">
 
           <NuxtLink
             v-for="(item, index) in sortProgram(program)" :key="index"
             :to="getLink(item)"
-            class="program-thumb has-white-background-color border py-6 px-4 flex flex-col text-center w-[18rem] min-h-[18rem] 2xl:basis-auto md:w-[20rem] md:min-h-[20rem] 2xl:min-h-[22rem] 2xl:w-[22rem] 3xl:min-h-[26rem] 3xl:w-[26rem]"
+            class="program-thumb has-white-background-color border"
           >
-            <h3 class="text-xs md:text-sm lg:text-base font-bold basis-12" v-html="item.title.rendered.replace('–','<br>')"></h3>
+            <div class="program-thumb-in  py-6 px-4 text-center">
+              <h3 class="text-xs md:text-sm lg:text-base font-bold basis-12" v-html="item.title.rendered.replace('–','<br>')"></h3>
 
-            <span class="flex flex-1 items-center justify-center tracking-tight md:font-light text-1xl 2xl:text-2xl">
-              {{ getFormattedDate(item) }}
-            </span>
+              <span class="flex flex-1 items-center justify-center tracking-tight md:font-light text-1xl 2xl:text-2xl">
+                {{ getFormattedDate(item) }}
+              </span>
 
-            <span class="text-sm lg:text-base font-bold">{{ getCategoryName(item) }}</span>
+              <span class="text-sm lg:text-base font-bold">{{ getCategoryName(item) }}</span>
+            </div>
           </NuxtLink>
 
         </div>

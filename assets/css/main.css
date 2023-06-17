@@ -38,9 +38,61 @@
   background: rgb(255,255,255);
   background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(230,230,230,1) 25%, rgba(230,230,230,1) 100%);
 }
+.program-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  place-items: start;
+}
+@media screen and (min-width: 784px) {
+  .program-container {
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  }
+}
 
-.program-thumb {
+@media screen and (min-width: 1280px) {
+  .program-container {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .program-container {
+    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .program-container {
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  }
+}
+
+.program-grid-container .program-thumb {
   border-color: rgba(0, 0, 0, .2);
+  position: relative;
+  background: red;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.program-grid-container .program-thumb-in {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: white;
+  flex-direction: column;
+}
+
+.program-grid-container .program-thumb::before {
+  content: "";
+  display: inline-flex;
+  width: 1px;
+  height: 0;
+  padding-top: 100%;
 }
 
 .wp-block-columns {

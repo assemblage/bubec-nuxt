@@ -1,0 +1,156 @@
+/*
+Theme Name: Bubec
+Theme URI:
+Author: Assemblage
+Author URI:
+Description:
+Tags:
+Version: 1.0
+Requires at least: 5.4
+Tested up to: 5.4
+Requires PHP: 7.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: bubec
+Domain Path: /languages
+*/
+
+@tailwind base;
+
+@media (max-width: 768px) {
+  h1 br {
+    content: '';
+  }
+  h1 br:after {
+    content: ' ';
+  }
+}
+
+.wp-block-image {
+  margin: 0;
+}
+.wp-block-spacer {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.wp-block-spacer.is-style-small {
+  height: 1.5rem !important;
+}
+.wp-block-spacer.is-style-medium {
+  height: clamp(2rem, 10vh, 6rem) !important;
+}
+.wp-block-spacer.is-style-intro-medium {
+  height: calc(clamp(2rem, 10vh, 6rem) + 4rem) !important;
+}
+.wp-block-spacer.is-style-large {
+  height: clamp(4rem, 20vh, 10rem) !important;
+}
+.wp-block-spacer.is-style-x-large {
+  height: clamp(4rem, 40vh, 20rem) !important;
+}
+
+@media screen and (max-width: 1536px) {
+  .wp-block-spacer.is-style-intro-medium {
+    height: calc(clamp(2rem, 10vh, 6rem)) !important;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .wp-block-spacer.is-style-medium {
+    height: 2rem !important;
+  }
+  .wp-block-spacer.is-style-intro-medium {
+    height: .5rem !important;
+  }
+  .wp-block-spacer.is-style-large {
+    height: 4rem !important;
+  }
+  .wp-block-spacer.is-style-x-large:not(.keep-size) {
+    height: 4rem !important;
+  }
+  .wp-block-spacer.is-style-x-large.keep-size {
+   height: 18rem !important;
+  }
+  .wp-block-columns + .wp-block-columns {
+    margin-top: 1rem;
+  }
+
+  .wp-block-table td:first-of-type {
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .nogap .wp-block-columns {
+    gap: 0 !important;
+  }
+  h1.has-text-align-center {
+    text-align: left !important;
+  }
+}
+
+.program-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  place-items: start;
+}
+@media screen and (min-width: 784px) {
+  .program-container {
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .program-container {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .program-container {
+    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .program-container {
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  }
+}
+
+
+
+
+
+
+
+.program-thumb {
+  border-color: rgba(0, 0, 0, .2);
+  position: relative;
+  background: red;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.program-thumb-in {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: white;
+  flex-direction: column;
+}
+
+.program-thumb::before {
+  content: "";
+  display: inline-flex;
+  width: 1px;
+  height: 0;
+  padding-top: 100%;
+}
+
+@tailwind components;
+@tailwind utilities;

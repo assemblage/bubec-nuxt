@@ -212,7 +212,6 @@ export default async () => {
     },
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
     buildModules: [
-      '@nuxt/postcss8',
       '@nuxtjs/style-resources',
     ],
     styleResources: {
