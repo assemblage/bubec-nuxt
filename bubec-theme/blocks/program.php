@@ -57,7 +57,7 @@ $posts = $query->get_posts();
 ?>
 
 <section id="<?= esc_attr($id); ?>" class="<?= esc_attr($className); ?> relative max-w-screen-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 lg:mb-10 mt-10 lg:mt-14">
-    <div class="space-x-8 xl:space-x-12 flex 3xl:justify-center overflow-x-auto">
+    <div class="program-grid-container overflow-x-auto">
         <?php
         foreach( $posts as $post ):
 
