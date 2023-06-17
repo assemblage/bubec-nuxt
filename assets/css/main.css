@@ -38,6 +38,7 @@
   background: rgb(255,255,255);
   background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(230,230,230,1) 25%, rgba(230,230,230,1) 100%);
 }
+
 .program-grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
@@ -70,7 +71,7 @@
 .program-grid-container .program-thumb {
   border-color: rgba(0, 0, 0, .2);
   position: relative;
-  background: red;
+  background: none;
   display: block;
   width: 100%;
   height: 100%;

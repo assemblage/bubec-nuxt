@@ -1539,7 +1539,7 @@ select {
   }
 }
 
-.program-container {
+.program-grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
   place-items: start;
@@ -1568,22 +1568,16 @@ select {
   }
 }
 
-
-
-
-
-
-
-.program-thumb {
+.program-grid-container .program-thumb {
   border-color: rgba(0, 0, 0, .2);
   position: relative;
-  background: red;
+  background: none;
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.program-thumb-in {
+.program-grid-container .program-thumb-in {
   position: absolute;
   top: 0;
   left: 0;
@@ -1594,7 +1588,7 @@ select {
   flex-direction: column;
 }
 
-.program-thumb::before {
+.program-grid-container .program-thumb::before {
   content: "";
   display: inline-flex;
   width: 1px;
