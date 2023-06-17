@@ -96,25 +96,25 @@ Domain Path: /languages
   place-items: start;
 }
 @media screen and (min-width: 784px) {
-  .program-container {
+  .program-grid-container {
     grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .program-container {
+  .program-grid-container {
     grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   }
 }
 
 @media screen and (min-width: 1536px) {
-  .program-container {
+  .program-grid-container {
     grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
   }
 }
 
 @media screen and (min-width: 1900px) {
-  .program-container {
+  .program-grid-container {
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   }
 }

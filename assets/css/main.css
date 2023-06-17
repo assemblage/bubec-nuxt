@@ -39,31 +39,32 @@
   background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(230,230,230,1) 25%, rgba(230,230,230,1) 100%);
 }
 
+
 .program-grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
   place-items: start;
 }
 @media screen and (min-width: 784px) {
-  .program-container {
+  .program-grid-container {
     grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .program-container {
+  .program-grid-container {
     grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   }
 }
 
 @media screen and (min-width: 1536px) {
-  .program-container {
+  .program-grid-container {
     grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
   }
 }
 
 @media screen and (min-width: 1900px) {
-  .program-container {
+  .program-grid-container {
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   }
 }
@@ -95,6 +96,7 @@
   height: 0;
   padding-top: 100%;
 }
+
 
 .wp-block-columns {
   gap: 5rem;
