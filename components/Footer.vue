@@ -1,10 +1,11 @@
 <template>
-  <footer class="main-footer relative h-[30rem] md:h-96 flex items-end">
+  <footer class="main-footer relative h-[50rem] md:h-96 flex items-end">
 
-    <div class="footer-logos py-4 md:py-2 px-4 sm:px-6 lg:px-10">
+
+    <div class="footer-logos w-full max-w-screen-3xl mx-auto py-4 md:py-2 px-4 sm:px-6 lg:px-10">
 
       <a href="#"><img src="~assets/images/eu-logo.png" alt="Logo projektu Evropské unie" /></a>
-      <a href="#"><img src="~assets/images/praha.png" alt="Logo Hlavního města Prahy" /></a>
+      <a href="#" class="logo-praha"><img src="~assets/images/praha.png" alt="Logo Hlavního města Prahy" /></a>
       <a href="#"><img src="~assets/images/mk.jpg" alt="Logo ministerstva kultury" /></a>
       <a href="#"><img src="~assets/images/npo.png" alt="Logo Národního plánu obnovy" /></a>
       <a href="#"><img src="~assets/images/nupz.jpeg" alt="Logo Nadaxe umění pro zdraví" /></a>
@@ -79,14 +80,27 @@ export default {
   position: relative;
   z-index: 1;
   width: 100%;
-  column-gap: 1em;
+  column-gap: 2rem;
+  flex-wrap: wrap;
+  row-gap: 2rem;
 
   a {
-      width: auto;
+      flex: 1 0 25%;
+
+      @include media-up(lg) {
+        flex: 1 0 auto;
+      }
+
     }
   img {
-    height: 60px;
-    width: auto;
+
+    height: 100px;
+    width: 100%;
+    object-fit: contain;
+
+    @include media-up(lg) {
+      height: 60px;
+    }
   }
 
 }
