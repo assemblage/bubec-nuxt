@@ -1559,13 +1559,13 @@ select {
 
 @media screen and (min-width: 1536px) {
   .program-grid-container {
-    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));
   }
 }
 
 @media screen and (min-width: 1900px) {
   .program-grid-container {
-    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));
   }
 }
 
