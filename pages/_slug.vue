@@ -39,19 +39,19 @@ export default {
     title() {
       if( !this.page ) return;
 
-      return this.page.title.rendered;
+      return this.page?.title?.rendered || '';
     },
 
     pageContent() {
       if( !this.page ) return;
 
-      return this.page.content.rendered;      
+      return this.page?.content?.rendered || '';
     },
 
     excerpt() {
       if( !this.page ) return;
 
-      return this.page.excerpt.rendered.replace(/<[^>]*>?/gm, '');      
+      return this.page.excerpt.rendered.replace(/<[^>]*>?/gm, '');
     }
   },
 
@@ -69,7 +69,7 @@ export default {
     });
 
     return {
-      title: `${this.title} — ${this.$config.globalTitle}`,        
+      title: `${this.title} — ${this.$config.globalTitle}`,
       meta: [
         ...openGraphMetaArr,
       ],

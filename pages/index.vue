@@ -43,11 +43,10 @@ export default {
   },
 
   head() {
-
     const openGraphMetaArr = getOpenGraphMeta({
       site_name: this.$config.globalTitle,
       title: `${this.title} — ${this.$config.globalTitle}`,
-      description: this.excerpt,
+      description: this?.excerpt,
       url: this.$config.baseURL.production,
       type: 'website',
       mainImage: `/project-main-image.png`
