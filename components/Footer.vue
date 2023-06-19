@@ -88,7 +88,7 @@ export default {
       flex: 1 0 25%;
 
       @include media-up(lg) {
-        flex: 1 0 auto;
+        flex: 1 0 0;
       }
 
     }
