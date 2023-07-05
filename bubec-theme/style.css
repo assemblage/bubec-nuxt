@@ -1539,6 +1539,11 @@ select {
   }
 }
 
+@media screen and (max-width: 783px) {
+  .program-filters__nav {
+    gap: 0.5rem;
+  }
+}
 
 .program-grid-container {
   display: grid;
