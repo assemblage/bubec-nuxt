@@ -58,7 +58,12 @@
           <h3 class="font-bold text-base sm:text-lg 2xl:text-xl uppercase my-2 sm:my-5 lg:mt-0 lg:mb-10 cursor-pointer lg:cursor-default" @click=" activeSubmenu = activeSubmenu == index ? null : index">{{ $t(index) }}</h3>
 
           <div :class="[ activeSubmenu == index ? '' : 'overflow-hidden max-h-0 lg:overflow-visible lg:max-h-auto' ]">
-            <span v-for="(item, index) in item" :key="index" class="lowercase block text-sm lg:text-base mb-2 lg:mb-4" @click="showMenu = false">
+            <span
+              v-for="(item, index) in item"
+              :key="index"
+              class="lowercase block text-sm lg:text-base mb-2 lg:mb-4"
+              @click="showMenu = false"
+            >
               <NuxtLink :to="parseUrl(item)" class="hover:underline decoration-2">
                 {{ item.title }}
               </NuxtLink>

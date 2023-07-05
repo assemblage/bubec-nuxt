@@ -7,7 +7,7 @@
       <div v-show="program.length > 0">
         <h2 class="text-center text-xl lg:text-1xl xl:text-2xl tracking-tight capitalize font-bold">{{ monthName }}</h2>
 
-        <div class="program-grid-container px-4 sm:px-6 lg:px-8 gap-8 my-10 sm:my-20">
+        <div class="program-grid-container px-4 sm:px-6 lg:px-8 my-10 sm:my-20">
 
           <NuxtLink
             v-for="(item, index) in sortProgram(program)" :key="index"
@@ -15,13 +15,13 @@
             class="program-thumb has-white-background-color border"
           >
             <div class="program-thumb-in  py-6 px-4 text-center">
-              <h3 class="text-xs md:text-sm lg:text-base font-bold basis-12" v-html="item.title.rendered.replace('–','<br>')"></h3>
+              <h3 class="text-xs md:text-sm lg:text-base font-bold basis-12 program-thumb__title" v-html="item.title.rendered.replace('–','<br>')"></h3>
 
-              <span class="flex flex-1 items-center justify-center tracking-tight md:font-light text-1xl 2xl:text-2xl">
+              <span class="flex flex-1 items-center justify-center tracking-tight md:font-light text-1xl 2xl:text-2x program-thumb__date">
                 {{ getFormattedDate(item) }}
               </span>
 
-              <span class="text-sm lg:text-base font-bold">{{ getCategoryName(item) }}</span>
+              <span class="text-sm lg:text-base font-bold program-thumb__type">{{ getCategoryName(item) }}</span>
             </div>
           </NuxtLink>
 
