@@ -1539,6 +1539,7 @@ select {
   }
 }
 
+
 @media screen and (max-width: 783px) {
   .program-filters__nav {
     gap: 0.5rem;
@@ -1547,13 +1548,13 @@ select {
 
 .program-grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
   place-items: start;
 }
 
 @media screen and (max-width: 783px) {
   .program-grid-container {
     gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
   }
   .program-thumb__date,
   .program-thumb__date.text-1xl {
@@ -1564,6 +1565,19 @@ select {
   .program-thumb__type.text-sm {
     font-size: 1rem;
     line-height: 1rem;
+  }
+}
+
+@media screen and (min-width: 784px) {
+  .program-grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .program-grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   }
 }
 
