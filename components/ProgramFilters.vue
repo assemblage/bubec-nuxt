@@ -13,7 +13,7 @@
       </NuxtLink>
     </nav>
 
-    <nav class="max-w-3xl text-sm sm:text-base px-4 sm:px-6 lg:px-8 mx-auto flex justify-center items-center space-x-4 mt-10 sm:mt-20 mb-10">
+    <nav class="max-w-3xl text-sm sm:text-base px-4 sm:px-6 lg:px-8 mx-auto flex flex-wrap justify-center items-center space-x-4 mt-10 sm:mt-20 mb-10">
       <button v-for="(item, index) in years" :key="index" :class="[programYear == item ? '' : 'opacity-40 hover:opacity-100 transition']" @click="changeYear(item)">
         {{ item }}
       </button>
