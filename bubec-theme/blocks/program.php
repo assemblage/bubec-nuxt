@@ -28,7 +28,7 @@ $args = array(
 		array(
 			'key'     => 'event_end',
 			'value'   => wp_date("Y-m-d"),
-			'compare' => '<=',
+			'compare' => '>=',
       'type' => 'DATE'
 		),
 	),
