@@ -20,15 +20,15 @@ $args = array(
     'post_type' => 'program',
     'post_status' => 'publish',
     'posts_per_page' => 4,
-    'meta_key' => 'event_date',
+    'meta_key' => 'event_end',
     'meta_type' => 'DATE',
     'order' => 'ASC',
     'orderby'   => 'meta_value',
     'meta_query' => array(
 		array(
-			'key'     => 'event_date',
+			'key'     => 'event_end',
 			'value'   => wp_date("Y-m-d"),
-			'compare' => '>=',
+			'compare' => '<=',
             'type' => 'DATE'
 		),
 	),
