@@ -243,6 +243,13 @@ export default async () => {
         },
         detectBrowserLanguage: false
       }],
+      ['@nuxtjs/sitemap',
+      {
+        hostname: !dev ? config.baseURL.production : config.baseURL.development,
+        gzip: true,
+        trailingSlash: true,
+      },
+    ], // If you use other modules (eg. nuxt-i18n), always declare the sitemap module at end of array
     ],
     i18n: {
       parsePages: false,
