@@ -10,6 +10,7 @@ export default {
   seo: {
     google: {
       tagManagerID: 'GTM-WFJDBWG',
+      googleVerification: 'QKLpI8qwfS31qBm0k_frXamb_MhTsmYyX7W34EQfmQA',
     },
     themeColor: '#000000',
   },

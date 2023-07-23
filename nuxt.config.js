@@ -287,7 +287,8 @@ export default async () => {
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'theme-color', content: config.seo.themeColor },
         { name: 'msapplication-TileColor', content: config.seo.themeColor },
-      ],
+        { name: 'google-site-verification', content: config.seo.google.googleVerification },
+s      ],
       link: [
         ...assets.css,
         { rel: 'icon', type: 'image/x-icon', href: '/favicons/favicon.ico', media: '(prefers-color-scheme:light)' },
