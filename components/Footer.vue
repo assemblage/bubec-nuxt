@@ -10,6 +10,8 @@
       <a href="#"><img src="~assets/images/npo.png" alt="Logo Národního plánu obnovy" /></a>
       <a href="#"><img src="~assets/images/nupz.jpeg" alt="Logo Nadaxe umění pro zdraví" /></a>
       <a href="#"><img src="~assets/images/sfk.png" alt="Logo Státního fondu kultury" /></a>
+      <a href="#" class="logo-p2"><img src="~assets/images/logo-p2.jpeg" alt="Logo Městská část Praha 2" /></a>
+      <a href="#"><img src="~assets/images/logo-praha-5.jpeg" alt="Logo Městská část Praha 5" /></a>
 
     </div>
 
@@ -101,6 +103,10 @@ export default {
     @include media-up(lg) {
       height: 60px;
     }
+  }
+
+  a.logo-p2 img {
+        height: 120px;
   }
 
 }
