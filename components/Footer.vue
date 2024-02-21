@@ -11,7 +11,7 @@
       <a href="#"><img src="~assets/images/nupz.jpeg" alt="Logo Nadaxe umění pro zdraví" /></a>
       <a href="#"><img src="~assets/images/sfk.png" alt="Logo Státního fondu kultury" /></a>
       <a href="#" class="logo-p2"><img src="~assets/images/logo-p2.jpeg" alt="Logo Státního fondu kultury" /></a>
-      <a href="#"><img src="~assets/images/logo-p5.jpeg" alt="Logo Státního fondu kultury" /></a>
+      <a href="#"><img src="~assets/images/logo-praha-5.jpeg" alt="Logo Státního fondu kultury" /></a>
 
     </div>
 
