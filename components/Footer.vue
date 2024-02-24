@@ -12,6 +12,7 @@
       <a href="#"><img src="~assets/images/sfk.png" alt="Logo Státního fondu kultury" /></a>
       <a href="#" class="logo-p2"><img src="~assets/images/logo-p2.jpeg" alt="Logo Městská část Praha 2" /></a>
       <a href="#"><img src="~assets/images/logo-praha-5.jpeg" alt="Logo Městská část Praha 5" /></a>
+      <a href="#"><img src="~assets/images/kudyznudy_logo.png" alt="Kudy z nudy" /></a>
 
     </div>
 
