@@ -1,7 +1,7 @@
 // responsive
 export default {
   globalTitle: 'Bubec',
-  apiBaseUrl: 'https://bubec-wordpress.assemblage.cz/',
+  apiBaseUrl: 'https://bubec-wordpress.assemblage.cz.san04.vas-server.cz/',
   useFileCachedAPI: true,
   cookiePolicy: {
     isActive: false,

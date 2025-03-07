@@ -1,71 +1,101 @@
-# bubec
+Nuxt 2 - Netlify Docker Compose Environment
 
-requires the Backend repo https://github.com/assemblage/bubec-wordpress to be installed in the same root folder as this one to compile TailwindCSS for guttenberg blocks (see tailwind.config.js)
+This project runs a Nuxt 2 application inside a Docker container using Docker Compose, fully emulating Netlify's environment.
 
-## Build Setup
+---------------------------------------------------
 
-```bash
-# install dependencies
-$ yarn install
+🚀 Quick Start
+---------------------------------------------------
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+1️⃣ Ensure you have Docker and Docker Compose installed.
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+2️⃣ Build and start the project:
 
-# generate static project
-$ yarn generate
-```
+docker-compose up --build
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+Open <http://localhost:3000> in your browser.
 
-## Special Directories
+---------------------------------------------------
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+⚡ Production Build (Static Site)
+---------------------------------------------------
 
-### `assets`
+1️⃣ Generate Static Files
+--------------------------
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+docker-compose run nuxt npm run generate
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+Generated files will be inside the dist/ directory.
 
-### `components`
+2️⃣ Serve Static Site
+----------------------
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+docker-compose run -p 3000:3000 nuxt npm run start
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+Open <http://localhost:3000>.
 
-### `layouts`
+---------------------------------------------------
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+🛠️ Useful Commands
+---------------------------------------------------
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+Build and start in development mode
+===========================================
 
+docker-compose up --build
 
-### `pages`
+Start the project (without rebuilding)
+===========================================
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+docker-compose up
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+Stop running containers
+===========================================
 
-### `plugins`
+docker-compose down
 
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
+Generate static files for production
+===========================================
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
+docker-compose run nuxt npm run generate
 
-### `static`
+Serve the generated static site
+===========================================
 
-This directory contains your static files. Each file inside this directory is mapped to `/`.
+docker-compose run -p 3000:3000 nuxt npm run start
 
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
+Rebuild everything from scratch
+===========================================
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
+docker-compose down && docker-compose build --no-cache && docker-compose up
 
-### `store`
+---------------------------------------------------
 
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
+🛑 Stopping the Containers
+---------------------------------------------------
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+To stop a running container, press CTRL + C or run:
+
+docker-compose down
+
+---------------------------------------------------
+
+📦 What's Inside?
+---------------------------------------------------
+
+- Runs Nuxt 2 with Docker Compose
+- Node.js 16.15.0 (Same as Netlify)
+- Auto-reloading in Dev Mode
+- Port Mapping (3000:3000 for Nuxt)
+- Environment Variables (CI=1, NPM_FLAGS=--no-optional)
+
+---------------------------------------------------
+
+🎯 Notes
+---------------------------------------------------
+
+- If you see permission errors, try:
+
+sudo chmod -R 777 node_modules .nuxt
+
+🚀 Now your Nuxt 2 project runs exactly like it does on Netlify, inside Docker Compose! 🎉

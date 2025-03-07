@@ -1,0 +1,16 @@
+services:
+  nuxt:
+    container_name: nuxt-netlify
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_VERSION: "16.15.0"
+      NPM_FLAGS: "--no-optional"
+      NODE_EXTRA_CA_CERTS: "/etc/ssl/certs/ca-certificates.crt"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: ["npm", "run", "dev"]
